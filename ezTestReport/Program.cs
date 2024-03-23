@@ -8,8 +8,6 @@ Position: Test Maintenance Technician
 */
 
 using ClosedXML.Excel;
-using DocumentFormat.OpenXml.Office2010.ExcelAc;
-using DocumentFormat.OpenXml.Spreadsheet;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,11 +18,11 @@ namespace EzTestReport
 {
     public class Program
     {
-        public static void Report(string filePath, string imagePath, string stationName, string serialNumber, string partNumber, string passCount,
+        public void Report(string filePath, string imagePath, string stationName, string serialNumber, string partNumber, string passCount,
             string testStatus, string failMode, string testResult, string testLimits, out string fileOutputPath, out int result, out string errorMessage)
         {
 
-            DateTime thisDay = DateTime.Today;
+            DateTime thisDay = DateTime.Now;
 
             filePath = filePath + @"\TestReport_" + thisDay.ToString("d").Replace('/', '-') + ".xlsx";
 
@@ -33,13 +31,13 @@ namespace EzTestReport
                 if (File.Exists(filePath))
                 {
                     Console.WriteLine("File already exists!");
-                    AddToRow(filePath, serialNumber, partNumber, passCount, testStatus, thisDay.ToString("G"), failMode, testResult, testLimits);
+                    AddToRow(filePath, serialNumber, partNumber, passCount, testStatus, thisDay.ToString(""), failMode, testResult, testLimits);
                 }
                 else
                 {
                     Console.WriteLine("Creating file!");
                     CreateSpreadsheet(filePath, imagePath, stationName);
-                    AddToRow(filePath, serialNumber, partNumber, passCount, testStatus, thisDay.ToString("G"), failMode, testResult, testLimits);
+                    AddToRow(filePath, serialNumber, partNumber, passCount, testStatus, thisDay.ToString("T"), failMode, testResult, testLimits);
                 }
             }
             catch (IOException)
@@ -55,34 +53,42 @@ namespace EzTestReport
             fileOutputPath = filePath;
 
         }
-        public static void CreateSpreadsheet(string filePath, string imagePath, string stationName)
+        private static void CreateSpreadsheet(string filePath, string imagePath, string stationName)
         {
+            //Workbook vars
             var wb = new XLWorkbook();
-
             var ws = wb.Worksheets.Add("Reports");
 
+            //Cell vars
+            var headerTitle = ws.Cell("C1");
+            var yieldData = ws.Cell("J1");
+            var versionTitle = ws.Cell("C2");
+
+            //Range vars
+            var headerColumns = ws.Columns("B:I");
+            var statiticsColumns = ws.Columns("J:L");
+            var filterRange = ws.Range("B4", "G4");
+            var headerRow = ws.Row(4);
+            var statiticsHeader = ws.Range("J10:L10");
+
+            //Vars
             string version = "ezTestReport v1.0.0";
 
-            //HeaderData
+            //Header Style
 
             ws.AddPicture(imagePath).MoveTo(ws.Cell("A1")).Scale(0.6);
-
-            var headerTitle = ws.Cell("C1");
+ 
             headerTitle.SetValue(stationName + " AM & AN BE Test Report").Style.Font.SetBold();
             headerTitle.Style.Font.SetFontSize(36);
 
-            ws.Cell("L1").SetValue("YIELD 0%").Style.Font.SetBold();
-            ws.Cell("L1").Style.Font.SetFontSize(20);
+            yieldData.SetValue("YIELD 0%").Style.Font.SetBold();
+            yieldData.Style.Font.SetFontSize(20);
 
-            var versionTitle = ws.Cell("C2");
             versionTitle.SetValue(version).Style.Font.SetFontSize(10);
             versionTitle.Style.Font.SetItalic();
 
-            var myColumns = ws.Columns("B:I");
+            headerColumns.Width = 20;
 
-            myColumns.Width = 20;
-
-            var headerRow = ws.Row(4);
             headerRow.Style.Fill.BackgroundColor = XLColor.Gray;
             headerRow.Style.Font.SetFontColor(XLColor.White);
 
@@ -90,17 +96,18 @@ namespace EzTestReport
             ws.Cell("C4").SetValue("PartNumber");
             ws.Cell("D4").SetValue("PassCount");
             ws.Cell("E4").SetValue("TestStatus");
-            ws.Cell("F4").SetValue("Date");
+            ws.Cell("F4").SetValue("Hour");
             ws.Cell("G4").SetValue("Failure");
             ws.Cell("H4").SetValue("Result");
             ws.Cell("I4").SetValue("Limits");
 
-            var filterRange = ws.Range("B4", "G4");
             filterRange.SetAutoFilter();
 
-            //Statitics
+            //Statitics Style
 
-            ws.Column("J").Width = 20;
+            statiticsColumns.Width = 20;
+            statiticsHeader.Merge();
+
             ws.Cell("J6").SetValue("Units Processed: ").Style.Font.SetBold();
             ws.Cell("J6").Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Right);
             ws.Cell("K6").SetValue(1);
@@ -115,36 +122,39 @@ namespace EzTestReport
             ws.Cell("J8").Style.Fill.BackgroundColor = XLColor.Red;
             ws.Cell("K8").SetValue(0);
 
-            ws.Column("M").Width = 20;
-            ws.Cell("M6").SetValue("Daily Failures").Style.Font.SetBold();
-            ws.Cell("M6").Style.Fill.BackgroundColor = XLColor.Amber;
-            ws.Cell("M7").SetValue("Partnumber").Style.Font.SetBold();
-            ws.Cell("N7").SetValue("Failure").Style.Font.SetBold();
-            ws.Cell("O7").SetValue("Appereances").Style.Font.SetBold();
+            ws.Cell("J10").SetValue("Daily Failures").Style.Font.SetBold();
+            ws.Cell("J10").Style.Fill.BackgroundColor = XLColor.Amber;
+            ws.Cell("J11").SetValue("Partnumber").Style.Font.SetBold();
+            ws.Cell("K11").SetValue("Failure").Style.Font.SetBold();
+            ws.Cell("L11").SetValue("Appereances").Style.Font.SetBold();
 
             wb.SaveAs(filePath);
 
             Console.WriteLine("File created!");
+
+            wb.Dispose();
         }
-        public static void AddToRow(string filePath, string serialNumber, string partNumber,
+        private static void AddToRow(string filePath, string serialNumber, string partNumber,
             string passCount, string testStatus, string testDate, string failMode, string testResult, string testLimits)
         {
             using (var wb = new XLWorkbook(filePath))
             {
-                int cellValue = 0;
+                //Vars
+                int passUnits = 0;
+                int failUnits = 0;
+                int processedUnits = 0;
+                int yieldPercent = 0;
+
                 var ws = wb.Worksheet("Reports");
 
                 var referenceColumn = ws.Column("B");
 
-                //int lastRow = ws.LastRowUsed().RowNumber();
                 int lastRow = referenceColumn.LastCellUsed().Address.RowNumber;
-                //Console.WriteLine(lastRow);
-                //int dailyFailureRow = ws.Column("M").LastCellUsed().Address.RowNumber;
-
+                
 
                 lastRow = lastRow + 1;
-                //dailyFailureRow = dailyFailureRow + 1;
 
+                //Update Table
                 ws.Cell(lastRow, 2).SetValue(serialNumber);
                 ws.Cell(lastRow, 3).SetValue(partNumber);
                 ws.Cell(lastRow, 4).SetValue(passCount);
@@ -154,30 +164,36 @@ namespace EzTestReport
                 ws.Cell(lastRow, 8).SetValue(testResult);
                 ws.Cell(lastRow, 9).SetValue(testLimits);
 
-                ws.Cell("K6").SetValue(lastRow - 4);
 
+                processedUnits = lastRow - 4;
+
+                ws.Cell("K6").SetValue(processedUnits);
+
+                //Update Statitics
                 if (testStatus == "P")
                 {
-                    cellValue = Int32.Parse(ws.Cell("K7").Value.ToString());
-                    ws.Cell("K7").SetValue(cellValue + 1);
+                    passUnits = Int32.Parse(ws.Cell("K7").Value.ToString());
+                    passUnits = passUnits + 1;
+                    ws.Cell("K7").SetValue(passUnits);
                 }
                 else if (testStatus == "F")
                 {
-                    cellValue = Int32.Parse(ws.Cell("K8").Value.ToString());
-                    ws.Cell("K8").SetValue(cellValue + 1);
+                    failUnits = Int32.Parse(ws.Cell("K8").Value.ToString());
+                    failUnits = failUnits + 1;
+                    ws.Cell("K8").SetValue(failUnits);
 
-                    if (ws.Cell("M8").IsEmpty())
+                    if (ws.Cell("J12").IsEmpty())
                     {
-                        ws.Cell(8, 13).SetValue(partNumber);
-                        ws.Cell(8, 14).SetValue(failMode);
-                        ws.Cell(8, 15).SetValue(1);
+                        ws.Cell(12, 10).SetValue(partNumber);
+                        ws.Cell(12, 11).SetValue(failMode);
+                        ws.Cell(12, 12).SetValue(1);
                     }
                     else
                     {
                         Console.WriteLine("b");
                         List<string> failModes = new List<string>();
 
-                        var failModeColumn = ws.Range("N8", "N28");
+                        var failModeColumn = ws.Range("K12", "K32");
 
 
                         int firstRowFailMode = failModeColumn.FirstCell().Address.RowNumber;
@@ -185,34 +201,29 @@ namespace EzTestReport
 
                         for (int row = firstRowFailMode; row <= lastRowFailMode; row++)
                         {
-                            string cell = "N" + row; 
+                            string cell = "K" + row; 
                             failModes.Add(ws.Cell(cell).Value.ToString());
                         }
 
                         if (failModes.Contains(failMode))
                         {
-                            ws.Cell(lastRowFailMode,15).SetValue(Int32.Parse(ws.Cell(lastRowFailMode,15).Value.ToString()) + 1);
+                            ws.Cell(lastRowFailMode,12).SetValue(Int32.Parse(ws.Cell(lastRowFailMode,12).Value.ToString()) + 1);
+                        } else
+                        {
+                            ws.Cell(lastRowFailMode + 1, 10).SetValue(partNumber);
+                            ws.Cell(lastRowFailMode + 1, 11).SetValue(failMode);
+                            ws.Cell(lastRowFailMode + 1, 12).SetValue(1);
                         }
-
-
-
-                        //int firstRow = ws.Cell("M9").Address.RowNumber;
-                        //int lastRow = ws.Column(14).LastCellUsed().Address.RowNumber;
-
-                        //List<string> failModes = new List<string>();
-
-                        //for (int row = firstRow; row <= lastRow; row++)
-                        //{
-                        //    var cell = 
-                        //}
-
-
                     }
                 }
 
+                //Update Yield
+                yieldPercent = (passUnits * 100) / processedUnits;
 
+                ws.Cell("J1").SetValue("YIELD " + yieldPercent + "%");
 
                 wb.SaveAs(filePath);
+                wb.Dispose();
 
                 Console.WriteLine("Data appended!");
 
