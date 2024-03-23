@@ -1,9 +1,10 @@
 ﻿/* made by leo
 
 Title: EzTestReport
-Autor: Leonardo Avalos
-Date: 18/03/2024
+Autor: leonardo.avalos.montes@continental-corporation.com
 Position: Test Maintenance Technician
+Location: Continental Periferico - Guadalajara
+Date: 18/03/2024
 
 */
 
@@ -11,8 +12,6 @@ using ClosedXML.Excel;
 using System;
 using System.Collections.Generic;
 using System.IO;
-
-
 
 namespace EzTestReport
 {
