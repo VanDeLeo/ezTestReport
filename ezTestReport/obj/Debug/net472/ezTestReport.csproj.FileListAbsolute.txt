@@ -18,3 +18,4 @@ C:\Users\leoav\OneDrive\Documentos\Proyectos\TestExec\ezTestReport\ezTestReport\
 C:\Users\leoav\OneDrive\Documentos\Proyectos\TestExec\ezTestReport\ezTestReport\obj\Debug\net472\ezTestRe.64C2B3A6.Up2Date
 C:\Users\leoav\OneDrive\Documentos\Proyectos\TestExec\ezTestReport\ezTestReport\obj\Debug\net472\ezTestReport.dll
 C:\Users\leoav\OneDrive\Documentos\Proyectos\TestExec\ezTestReport\ezTestReport\obj\Debug\net472\ezTestReport.pdb
+C:\Users\leoav\OneDrive\Documentos\Proyectos\TestExec\ezTestReport\ezTestReport\obj\Debug\net472\ezTestReport.sourcelink.json
