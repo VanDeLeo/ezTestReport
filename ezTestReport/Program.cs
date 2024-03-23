@@ -7,14 +7,12 @@ Position: Test Maintenance Technician
 
 */
 
-
-using ClosedXML;
 using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Office2010.ExcelAc;
 using DocumentFormat.OpenXml.Spreadsheet;
 using System;
-using System.Data.SqlTypes;
+using System.Collections.Generic;
 using System.IO;
-using System.IO.Packaging;
 
 
 
@@ -30,37 +28,28 @@ namespace EzTestReport
 
             filePath = filePath + @"\TestReport_" + thisDay.ToString("d").Replace('/', '-') + ".xlsx";
 
-            if (File.Exists(filePath))
+            try
             {
-                Console.WriteLine("File already exists!");
-                try
+                if (File.Exists(filePath))
                 {
+                    Console.WriteLine("File already exists!");
                     AddToRow(filePath, serialNumber, partNumber, passCount, testStatus, thisDay.ToString("G"), failMode, testResult, testLimits);
                 }
-                catch (System.IO.IOException)
-                {
-
-                    errorMessage = "File busy!";
-                    result = 0;
-                    throw;
-                }
-            }
-            else
-            {
-                try
+                else
                 {
                     Console.WriteLine("Creating file!");
-                    CreateSpreadsheet(filePath,imagePath, stationName);
+                    CreateSpreadsheet(filePath, imagePath, stationName);
                     AddToRow(filePath, serialNumber, partNumber, passCount, testStatus, thisDay.ToString("G"), failMode, testResult, testLimits);
                 }
-                catch (Exception)
-                {
-                    errorMessage = "Error during file creation!";
-                    result = 0;
-                    throw;
-                }
-
             }
+            catch (IOException)
+            {
+                result = 0;
+                errorMessage = "The DLL cannot access the file " + filePath + " because this is being used by another process ";
+                fileOutputPath = filePath;
+                Console.WriteLine(errorMessage);
+            }
+            
             result = 1;
             errorMessage = "null";
             fileOutputPath = filePath;
@@ -150,11 +139,11 @@ namespace EzTestReport
                 //int lastRow = ws.LastRowUsed().RowNumber();
                 int lastRow = referenceColumn.LastCellUsed().Address.RowNumber;
                 //Console.WriteLine(lastRow);
-                int dailyFailureRow = ws.Column("M").LastCellUsed().Address.RowNumber;
+                //int dailyFailureRow = ws.Column("M").LastCellUsed().Address.RowNumber;
 
 
                 lastRow = lastRow + 1;
-                dailyFailureRow = dailyFailureRow + 1;
+                //dailyFailureRow = dailyFailureRow + 1;
 
                 ws.Cell(lastRow, 2).SetValue(serialNumber);
                 ws.Cell(lastRow, 3).SetValue(partNumber);
@@ -174,19 +163,51 @@ namespace EzTestReport
                 }
                 else if (testStatus == "F")
                 {
-                    cellValue = Int32.Parse(ws.Cell("K7").Value.ToString());
-                    ws.Cell("K7").SetValue(cellValue + 1);
+                    cellValue = Int32.Parse(ws.Cell("K8").Value.ToString());
+                    ws.Cell("K8").SetValue(cellValue + 1);
 
-                    //if (ws.Cell("M8").IsEmpty() == false)
-                    //{
-                    //    var failRange = ws.Range("M8:");
+                    if (ws.Cell("M8").IsEmpty())
+                    {
+                        ws.Cell(8, 13).SetValue(partNumber);
+                        ws.Cell(8, 14).SetValue(failMode);
+                        ws.Cell(8, 15).SetValue(1);
+                    }
+                    else
+                    {
+                        Console.WriteLine("b");
+                        List<string> failModes = new List<string>();
 
-                    //    if ()
-                    //    {
+                        var failModeColumn = ws.Range("N8", "N28");
 
+
+                        int firstRowFailMode = failModeColumn.FirstCell().Address.RowNumber;
+                        int lastRowFailMode = failModeColumn.LastCellUsed().Address.RowNumber;
+
+                        for (int row = firstRowFailMode; row <= lastRowFailMode; row++)
+                        {
+                            string cell = "N" + row; 
+                            failModes.Add(ws.Cell(cell).Value.ToString());
+                        }
+
+                        if (failModes.Contains(failMode))
+                        {
+                            ws.Cell(lastRowFailMode,15).SetValue(Int32.Parse(ws.Cell(lastRowFailMode,15).Value.ToString()) + 1);
+                        }
+
+
+
+                        //int firstRow = ws.Cell("M9").Address.RowNumber;
+                        //int lastRow = ws.Column(14).LastCellUsed().Address.RowNumber;
+
+                        //List<string> failModes = new List<string>();
+
+                        //for (int row = firstRow; row <= lastRow; row++)
+                        //{
+                        //    var cell = 
                         //}
 
-                    //}
+
+                    }
                 }
 
 
