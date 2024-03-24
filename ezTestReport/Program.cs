@@ -30,7 +30,7 @@ namespace EzTestReport
                 if (File.Exists(filePath))
                 {
                     Console.WriteLine("File already exists!");
-                    AddToRow(filePath, serialNumber, partNumber, passCount, testStatus, thisDay.ToString(""), failMode, testResult, testLimits);
+                    AddToRow(filePath, serialNumber, partNumber, passCount, testStatus, thisDay.ToString("T"), failMode, testResult, testLimits);
                 }
                 else
                 {
@@ -189,7 +189,6 @@ namespace EzTestReport
                     }
                     else
                     {
-                        Console.WriteLine("b");
                         List<string> failModes = new List<string>();
 
                         var failModeColumn = ws.Range("K12", "K32");
