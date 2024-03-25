@@ -17,13 +17,13 @@ namespace EzTestReport
 {
     public class Program
     {
-        public void Report(string filePath, string imagePath, string stationName, string serialNumber, string partNumber, string passCount,
+        public void Report(string filePath, string fileName, string imagePath, string stationName, string serialNumber, string partNumber, string passCount,
             string testStatus, string failMode, string testResult, string testLimits, out string fileOutputPath, out int result, out string errorMessage)
         {
 
             DateTime thisDay = DateTime.Now;
 
-            filePath = filePath + @"\TestReport_" + thisDay.ToString("d").Replace('/', '-') + ".xlsx";
+            filePath = filePath + @"\"+ fileName +"_" + thisDay.ToString("d").Replace('/', '-') + ".xlsx";
 
             try
             {
@@ -75,7 +75,7 @@ namespace EzTestReport
             var statiticsHeader = ws.Range("J10:L10");
 
             //Vars
-            string version = "ezTestReport v1.0.1";
+            string version = "ezTestReport v1.0.3";
 
             //Header Style
 
