@@ -12,6 +12,7 @@ using ClosedXML.Excel;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Packaging;
 
 namespace EzTestReport
 {
@@ -31,6 +32,7 @@ namespace EzTestReport
                 {
                     Console.WriteLine("File already exists!");
                     AddToRow(filePath, serialNumber, partNumber, passCount, testStatus, thisDay.ToString("T"), failMode, testResult, testLimits);
+                    
                 }
                 else
                 {
@@ -38,6 +40,9 @@ namespace EzTestReport
                     CreateSpreadsheet(filePath, imagePath, stationName);
                     AddToRow(filePath, serialNumber, partNumber, passCount, testStatus, thisDay.ToString("T"), failMode, testResult, testLimits);
                 }
+                result = 1;
+                errorMessage = "None";
+                fileOutputPath = filePath;
             }
             catch (IOException)
             {
@@ -71,7 +76,7 @@ namespace EzTestReport
             var statiticsHeader = ws.Range("J10:L10");
 
             //Vars
-            string version = "ezTestReport v1.0.0";
+            string version = "ezTestReport v1.0.1";
 
             //Header Style
 
@@ -139,17 +144,18 @@ namespace EzTestReport
             using (var wb = new XLWorkbook(filePath))
             {
                 //Vars
+                var ws = wb.Worksheet("Reports");
+                var referenceColumn = ws.Column("B");
+
                 int passUnits = 0;
                 int failUnits = 0;
                 int processedUnits = 0;
                 int yieldPercent = 0;
-
-                var ws = wb.Worksheet("Reports");
-
-                var referenceColumn = ws.Column("B");
-
+                int indexStatitics = 3;
                 int lastRow = referenceColumn.LastCellUsed().Address.RowNumber;
-                
+                int statiticsRow = 0;
+
+                string cell = "";
 
                 lastRow = lastRow + 1;
 
@@ -189,7 +195,7 @@ namespace EzTestReport
                     }
                     else
                     {
-                        List<string> failModes = new List<string>();
+                        List<string> statiticsFailMode = new List<string>();
 
                         var failModeColumn = ws.Range("K12", "K32");
 
@@ -199,13 +205,15 @@ namespace EzTestReport
 
                         for (int row = firstRowFailMode; row <= lastRowFailMode; row++)
                         {
-                            string cell = "K" + row; 
-                            failModes.Add(ws.Cell(cell).Value.ToString());
+                            cell = ws.Cell("J" + row).Value.ToString() + "," + ws.Cell("K" + row).Value.ToString();
+                            statiticsFailMode.Add(cell);
                         }
 
-                        if (failModes.Contains(failMode))
+                        if (statiticsFailMode.Contains(partNumber + "," + failMode))
                         {
-                            ws.Cell(lastRowFailMode,12).SetValue(Int32.Parse(ws.Cell(lastRowFailMode,12).Value.ToString()) + 1);
+                            indexStatitics = statiticsFailMode.IndexOf(partNumber + "," + failMode);
+                            statiticsRow = indexStatitics + 12;
+                            ws.Cell(statiticsRow,12).SetValue(Int32.Parse(ws.Cell(lastRowFailMode,12).Value.ToString()) + 1);
                         } else
                         {
                             ws.Cell(lastRowFailMode + 1, 10).SetValue(partNumber);

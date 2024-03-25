@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ezTestReport")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7b2411cb048a436fa1549c65a48ec77d6f4ddf31")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0676f96535712e7105008aa576024d9ac33980ee")]
 [assembly: System.Reflection.AssemblyProductAttribute("ezTestReport")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ezTestReport")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
