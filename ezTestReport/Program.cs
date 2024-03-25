@@ -130,7 +130,7 @@ namespace EzTestReport
             ws.Cell("J10").Style.Fill.BackgroundColor = XLColor.Amber;
             ws.Cell("J11").SetValue("Partnumber").Style.Font.SetBold();
             ws.Cell("K11").SetValue("Failure").Style.Font.SetBold();
-            ws.Cell("L11").SetValue("Appereances").Style.Font.SetBold();
+            ws.Cell("L11").SetValue("Count").Style.Font.SetBold();
 
             wb.SaveAs(filePath);
 
@@ -174,14 +174,14 @@ namespace EzTestReport
 
                 ws.Cell("K6").SetValue(processedUnits);
 
-                //Update Statitics
+                //Update Statistics - If a test status = fail (F) the program goin' update the statitics section.
                 if (testStatus == "P")
                 {
                     passUnits = Int32.Parse(ws.Cell("K7").Value.ToString());
                     passUnits = passUnits + 1;
                     ws.Cell("K7").SetValue(passUnits);
                 }
-                else if (testStatus == "F")
+                else if (testStatus == "F") //Here. The program evaluate three things: part number, fail mode and count in the report.
                 {
                     failUnits = Int32.Parse(ws.Cell("K8").Value.ToString());
                     failUnits = failUnits + 1;
@@ -195,10 +195,9 @@ namespace EzTestReport
                     }
                     else
                     {
-                        List<string> statiticsFailMode = new List<string>();
-
+                        List<string> statiticsFailMode = new List<string>(); //The function of this list is save a fragment of statistics rows
+                                                                             //to search and stablish a difference between part numbers.
                         var failModeColumn = ws.Range("K12", "K32");
-
 
                         int firstRowFailMode = failModeColumn.FirstCell().Address.RowNumber;
                         int lastRowFailMode = failModeColumn.LastCellUsed().Address.RowNumber;
@@ -209,10 +208,10 @@ namespace EzTestReport
                             statiticsFailMode.Add(cell);
                         }
 
-                        if (statiticsFailMode.Contains(partNumber + "," + failMode))
+                        if (statiticsFailMode.Contains(partNumber + "," + failMode)) //If a fail mode for an specific part number already exists. It goin' update the count
                         {
                             indexStatitics = statiticsFailMode.IndexOf(partNumber + "," + failMode);
-                            statiticsRow = indexStatitics + 12;
+                            statiticsRow = indexStatitics + 12; //*12* is to offset the beggining of the table 
                             ws.Cell(statiticsRow,12).SetValue(Int32.Parse(ws.Cell(lastRowFailMode,12).Value.ToString()) + 1);
                         } else
                         {
