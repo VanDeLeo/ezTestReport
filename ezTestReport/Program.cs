@@ -12,7 +12,6 @@ using ClosedXML.Excel;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.IO.Packaging;
 
 namespace EzTestReport
 {
@@ -175,13 +174,11 @@ namespace EzTestReport
                 ws.Cell("K6").SetValue(processedUnits);
 
                 //Update Statistics - If a test status = fail (F) the program goin' update the statitics section.
-                if (testStatus == "P")
-                {
-                    passUnits = Int32.Parse(ws.Cell("K7").Value.ToString());
-                    passUnits = passUnits + 1;
-                    ws.Cell("K7").SetValue(passUnits);
-                }
-                else if (testStatus == "F") //Here. The program evaluate three things: part number, fail mode and count in the report.
+                passUnits = Int32.Parse(ws.Cell("K7").Value.ToString());
+                passUnits = passUnits + 1;
+                ws.Cell("K7").SetValue(passUnits);
+                
+                if (testStatus == "F") //Here. The program evaluate three things: part number, fail mode and count in the report.
                 {
                     failUnits = Int32.Parse(ws.Cell("K8").Value.ToString());
                     failUnits = failUnits + 1;
