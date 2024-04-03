@@ -1,0 +1,11 @@
+C:\Users\leoav\OneDrive\Documentos\Proyectos\TestExec\ezTestReportViewer\ezTestReportViewer\obj\Debug\ezTestReportViewer.csproj.AssemblyReference.cache
+C:\Users\leoav\OneDrive\Documentos\Proyectos\TestExec\ezTestReportViewer\ezTestReportViewer\obj\Debug\ezTestReportViewer.Properties.Resources.resources
+C:\Users\leoav\OneDrive\Documentos\Proyectos\TestExec\ezTestReportViewer\ezTestReportViewer\obj\Debug\ezTestReportViewer.csproj.GenerateResource.cache
+C:\Users\leoav\OneDrive\Documentos\Proyectos\TestExec\ezTestReportViewer\ezTestReportViewer\obj\Debug\ezTestReportViewer.csproj.CoreCompileInputs.cache
+C:\Users\leoav\OneDrive\Documentos\Proyectos\TestExec\ezTestReportViewer\ezTestReportViewer\bin\Debug\ezTestReportViewer.exe.config
+C:\Users\leoav\OneDrive\Documentos\Proyectos\TestExec\ezTestReportViewer\ezTestReportViewer\bin\Debug\ezTestReportViewer.exe
+C:\Users\leoav\OneDrive\Documentos\Proyectos\TestExec\ezTestReportViewer\ezTestReportViewer\bin\Debug\ezTestReportViewer.pdb
+C:\Users\leoav\OneDrive\Documentos\Proyectos\TestExec\ezTestReportViewer\ezTestReportViewer\obj\Debug\ezTestReportViewer.exe
+C:\Users\leoav\OneDrive\Documentos\Proyectos\TestExec\ezTestReportViewer\ezTestReportViewer\obj\Debug\ezTestReportViewer.pdb
+C:\Users\leoav\OneDrive\Documentos\Proyectos\TestExec\ezTestReportViewer\ezTestReportViewer\obj\Debug\ezTestReportViewer.tiny.resources
+C:\Users\leoav\OneDrive\Documentos\Proyectos\TestExec\ezTestReportViewer\ezTestReportViewer\obj\Debug\ezTestReportViewer.medium.resources
