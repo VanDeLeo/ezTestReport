@@ -1,32 +1,29 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReportViewer\\",
+  "WorkspaceRootPath": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReportViewer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C61F19F0-0421-45F5-9C42-AEFCBABEA118}|ezTestReportViewer\\ezTestReportViewer.csproj|c:\\users\\leoav\\onedrive\\documentos\\proyectos\\testexec\\eztestreportviewer\\eztestreportviewer\\medium.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C61F19F0-0421-45F5-9C42-AEFCBABEA118}|ezTestReportViewer\\ezTestReportViewer.csproj|solutionrelative:eztestreportviewer\\medium.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C61F19F0-0421-45F5-9C42-AEFCBABEA118}|ezTestReportViewer\\ezTestReportViewer.csproj|c:\\users\\leoav\\onedrive\\documentos\\proyectos\\testexec\\eztestreport\\eztestreportviewer\\eztestreportviewer\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C61F19F0-0421-45F5-9C42-AEFCBABEA118}|ezTestReportViewer\\ezTestReportViewer.csproj|solutionrelative:eztestreportviewer\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C61F19F0-0421-45F5-9C42-AEFCBABEA118}|ezTestReportViewer\\ezTestReportViewer.csproj|c:\\users\\leoav\\onedrive\\documentos\\proyectos\\testexec\\eztestreportviewer\\eztestreportviewer\\medium.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C61F19F0-0421-45F5-9C42-AEFCBABEA118}|ezTestReportViewer\\ezTestReportViewer.csproj|solutionrelative:eztestreportviewer\\medium.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{C61F19F0-0421-45F5-9C42-AEFCBABEA118}|ezTestReportViewer\\ezTestReportViewer.csproj|C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReportViewer\\eztestreportviewer\\medium.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C61F19F0-0421-45F5-9C42-AEFCBABEA118}|ezTestReportViewer\\ezTestReportViewer.csproj|solutionrelative:eztestreportviewer\\medium.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|ezTestReportViewer||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C61F19F0-0421-45F5-9C42-AEFCBABEA118}|ezTestReportViewer\\ezTestReportViewer.csproj|c:\\users\\leoav\\onedrive\\documentos\\proyectos\\testexec\\eztestreportviewer\\eztestreportviewer\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C61F19F0-0421-45F5-9C42-AEFCBABEA118}|ezTestReportViewer\\ezTestReportViewer.csproj|solutionrelative:eztestreportviewer\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C61F19F0-0421-45F5-9C42-AEFCBABEA118}|ezTestReportViewer\\ezTestReportViewer.csproj|C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReportViewer\\eztestreportviewer\\medium.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C61F19F0-0421-45F5-9C42-AEFCBABEA118}|ezTestReportViewer\\ezTestReportViewer.csproj|solutionrelative:eztestreportviewer\\medium.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C61F19F0-0421-45F5-9C42-AEFCBABEA118}|ezTestReportViewer\\ezTestReportViewer.csproj|c:\\users\\leoav\\onedrive\\documentos\\proyectos\\testexec\\eztestreportviewer\\eztestreportviewer\\medium.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C61F19F0-0421-45F5-9C42-AEFCBABEA118}|ezTestReportViewer\\ezTestReportViewer.csproj|solutionrelative:eztestreportviewer\\medium.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C61F19F0-0421-45F5-9C42-AEFCBABEA118}|ezTestReportViewer\\ezTestReportViewer.csproj|C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReportViewer\\eztestreportviewer\\medium.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C61F19F0-0421-45F5-9C42-AEFCBABEA118}|ezTestReportViewer\\ezTestReportViewer.csproj|solutionrelative:eztestreportviewer\\medium.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C61F19F0-0421-45F5-9C42-AEFCBABEA118}|ezTestReportViewer\\ezTestReportViewer.csproj|c:\\users\\leoav\\onedrive\\documentos\\proyectos\\testexec\\eztestreportviewer\\eztestreportviewer\\tiny.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C61F19F0-0421-45F5-9C42-AEFCBABEA118}|ezTestReportViewer\\ezTestReportViewer.csproj|C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReportViewer\\eztestreportviewer\\tiny.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C61F19F0-0421-45F5-9C42-AEFCBABEA118}|ezTestReportViewer\\ezTestReportViewer.csproj|solutionrelative:eztestreportviewer\\tiny.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C61F19F0-0421-45F5-9C42-AEFCBABEA118}|ezTestReportViewer\\ezTestReportViewer.csproj|c:\\users\\leoav\\onedrive\\documentos\\proyectos\\testexec\\eztestreportviewer\\eztestreportviewer\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|6185191f-1008-4fb2-a715-3a4e4f27e610"
     }
   ],
   "DocumentGroupContainers": [
@@ -36,7 +33,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -52,13 +49,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "medium.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReportViewer\\ezTestReportViewer\\medium.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReportViewer\\ezTestReportViewer\\medium.Designer.cs",
               "RelativeDocumentMoniker": "ezTestReportViewer\\medium.Designer.cs",
-              "ToolTip": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReportViewer\\ezTestReportViewer\\medium.Designer.cs",
+              "ToolTip": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReportViewer\\ezTestReportViewer\\medium.Designer.cs",
               "RelativeToolTip": "ezTestReportViewer\\medium.Designer.cs",
-              "ViewState": "AQIAACkAAAAAAAAAAAAhwDwAAAApAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-03T02:24:55.967Z",
               "EditorCaption": ""
@@ -67,9 +64,9 @@
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "tiny.cs",
-              "DocumentMoniker": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReportViewer\\ezTestReportViewer\\tiny.cs",
+              "DocumentMoniker": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReportViewer\\ezTestReportViewer\\tiny.cs",
               "RelativeDocumentMoniker": "ezTestReportViewer\\tiny.cs",
-              "ToolTip": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReportViewer\\ezTestReportViewer\\tiny.cs",
+              "ToolTip": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReportViewer\\ezTestReportViewer\\tiny.cs",
               "RelativeToolTip": "ezTestReportViewer\\tiny.cs",
               "ViewState": "AQIAAAgAAAAAAAAAAADgvw4AAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -78,24 +75,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "medium.cs",
-              "DocumentMoniker": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReportViewer\\ezTestReportViewer\\medium.cs",
+              "DocumentMoniker": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReportViewer\\ezTestReportViewer\\medium.cs",
               "RelativeDocumentMoniker": "ezTestReportViewer\\medium.cs",
-              "ToolTip": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReportViewer\\ezTestReportViewer\\medium.cs",
+              "ToolTip": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReportViewer\\ezTestReportViewer\\medium.cs",
               "RelativeToolTip": "ezTestReportViewer\\medium.cs",
-              "ViewState": "AQIAAAcAAAAAAAAAAAAWwBMAAAAAAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-03T02:11:46.36Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "medium.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReportViewer\\ezTestReportViewer\\medium.cs",
+              "DocumentMoniker": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReportViewer\\ezTestReportViewer\\medium.cs",
               "RelativeDocumentMoniker": "ezTestReportViewer\\medium.cs",
-              "ToolTip": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReportViewer\\ezTestReportViewer\\medium.cs [Dise\u00F1o]",
+              "ToolTip": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReportViewer\\ezTestReportViewer\\medium.cs [Dise\u00F1o]",
               "RelativeToolTip": "ezTestReportViewer\\medium.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-03T02:06:26.812Z",
@@ -105,23 +102,22 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "ezTestReportViewer",
-              "DocumentMoniker": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReportViewer\\ezTestReportViewer\\ezTestReportViewer.csproj",
+              "DocumentMoniker": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReportViewer\\ezTestReportViewer\\ezTestReportViewer.csproj",
               "RelativeDocumentMoniker": "ezTestReportViewer\\ezTestReportViewer.csproj",
-              "ToolTip": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReportViewer\\ezTestReportViewer\\ezTestReportViewer.csproj",
+              "ToolTip": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReportViewer\\ezTestReportViewer\\ezTestReportViewer.csproj",
               "RelativeToolTip": "ezTestReportViewer\\ezTestReportViewer.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-04-03T01:58:17.364Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-03T01:58:17.364Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReportViewer\\ezTestReportViewer\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReportViewer\\ezTestReportViewer\\Program.cs",
               "RelativeDocumentMoniker": "ezTestReportViewer\\Program.cs",
-              "ToolTip": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReportViewer\\ezTestReportViewer\\Program.cs",
+              "ToolTip": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReportViewer\\ezTestReportViewer\\Program.cs",
               "RelativeToolTip": "ezTestReportViewer\\Program.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAQwB8AAAAsAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-03T01:57:02.401Z",
               "EditorCaption": ""
