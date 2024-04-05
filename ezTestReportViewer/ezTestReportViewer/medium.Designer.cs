@@ -28,15 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chartFPY = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.fpyLabel = new System.Windows.Forms.Label();
+            this.passLabel = new System.Windows.Forms.Label();
+            this.failLabel = new System.Windows.Forms.Label();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             ((System.ComponentModel.ISupportInitialize)(this.chartFPY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
             // 
             // chartFPY
@@ -58,8 +62,7 @@
             this.chartFPY.Series.Add(series2);
             this.chartFPY.Size = new System.Drawing.Size(297, 295);
             this.chartFPY.TabIndex = 1;
-            this.chartFPY.Text = "chart1";
-            this.chartFPY.Click += new System.EventHandler(this.chartFPY_Click);
+            this.chartFPY.Text = "chartFPY";
             // 
             // label1
             // 
@@ -71,37 +74,45 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "FPY";
             // 
-            // label2
+            // fpyLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 49);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 22);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "99.99%";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.fpyLabel.AutoSize = true;
+            this.fpyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fpyLabel.Location = new System.Drawing.Point(12, 49);
+            this.fpyLabel.Name = "fpyLabel";
+            this.fpyLabel.Size = new System.Drawing.Size(71, 22);
+            this.fpyLabel.TabIndex = 3;
+            this.fpyLabel.Text = "99.99%";
             // 
-            // label3
+            // passLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 94);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(115, 17);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Pass Units: 1000";
+            this.passLabel.AutoSize = true;
+            this.passLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passLabel.Location = new System.Drawing.Point(12, 94);
+            this.passLabel.Name = "passLabel";
+            this.passLabel.Size = new System.Drawing.Size(115, 17);
+            this.passLabel.TabIndex = 4;
+            this.passLabel.Text = "Pass Units: 1000";
             // 
-            // label4
+            // failLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 148);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 17);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Fail Units: 1000";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.failLabel.AutoSize = true;
+            this.failLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.failLabel.Location = new System.Drawing.Point(12, 148);
+            this.failLabel.Name = "failLabel";
+            this.failLabel.Size = new System.Drawing.Size(106, 17);
+            this.failLabel.TabIndex = 5;
+            this.failLabel.Text = "Fail Units: 1000";
+            // 
+            // timer
+            // 
+            this.timer.Interval = 1000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // fileSystemWatcher1
+            // 
+            this.fileSystemWatcher1.EnableRaisingEvents = true;
+            this.fileSystemWatcher1.SynchronizingObject = this;
             // 
             // medium
             // 
@@ -109,15 +120,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(454, 289);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.failLabel);
+            this.Controls.Add(this.passLabel);
+            this.Controls.Add(this.fpyLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chartFPY);
             this.Name = "medium";
             this.Text = "Form2";
-            this.Load += new System.EventHandler(this.medium_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chartFPY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,8 +138,10 @@
 
         private System.Windows.Forms.DataVisualization.Charting.Chart chartFPY;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label fpyLabel;
+        private System.Windows.Forms.Label passLabel;
+        private System.Windows.Forms.Label failLabel;
+        private System.Windows.Forms.Timer timer;
+        private System.IO.FileSystemWatcher fileSystemWatcher1;
     }
 }

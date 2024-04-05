@@ -12,37 +12,30 @@ namespace ezTestReportViewer
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
-
-
-        private static FileSystemWatcher watcher;
+        /// 
         private static string filePath;
-
+        private static string windowType;
 
         [STAThread]
 
         private protected static void Main(string[] args)
         {
-            string windowType = args[0];
-            
+            windowType = args[0];
             filePath = args[1];
+            
 
             if (File.Exists(filePath))
             {
-                var (passUnits, failUnits, unitsProcessed) = ReadDocument();
-
-
-                double fpyPercent = ((double)passUnits * 100) / (double)unitsProcessed;
-
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
 
                 if (windowType == "tiny")
                 {
-                    Application.Run(new tiny(fpyPercent));
+                    //Application.Run(new tiny(fpyPercent));
                 }
                 else if (windowType == "medium")
                 {
-                    Application.Run(new medium(passUnits, failUnits, fpyPercent));
+                    Application.Run(new medium(filePath));
                 }
                 else if (windowType == "large")
                 {
@@ -50,38 +43,23 @@ namespace ezTestReportViewer
                 }
             }
 
-            watcher = new FileSystemWatcher();
-            watcher.Path = Path.GetDirectoryName(filePath);
-            watcher.Filter = Path.GetFileName(filePath);
-            watcher.NotifyFilter = NotifyFilters.LastWrite;
-            watcher.Changed += fileChanged;
-            watcher.EnableRaisingEvents = true;
-
         }
 
-        private static void fileChanged(object sender, FileSystemEventArgs e)
-        {
-            if (e.ChangeType == WatcherChangeTypes.Changed)
-            {
-                var (passUnits, failUnits, unitsProcessed) = ReadDocument();
-            }
-        }
+        //private static void fileChanged(object sender, FileSystemEventArgs e)
+        //{
+        //    if (e.ChangeType == WatcherChangeTypes.Changed)
+        //    {
+        //        var (passUnits, failUnits, unitsProcessed) = ReadDocument();
+        //        double fpyPercent = calculateFPY((double)passUnits, (double)unitsProcessed);
 
-        private static (int,int,int) ReadDocument()
-        {
-            int passUnits, failUnits, unitsProcessed;
-            using (var wb = new XLWorkbook(filePath))
-            {
-                var ws = wb.Worksheet("Reports");
+        //        if (windowType == "medium") 
+        //        {
+        //            medium.fileModified((int)passUnits, (int)failUnits, fpyPercent);
+        //        }
+                
+        //    }
+        //}
 
-                unitsProcessed = Int32.Parse(ws.Cell("K6").ToString());
-                passUnits = Int32.Parse(ws.Cell("K7").ToString());
-                failUnits = Int32.Parse(ws.Cell("K8").ToString());
-
-                wb.Dispose();
-
-            }
-            return (passUnits, failUnits, unitsProcessed);
-        }
+        
     }
 }
