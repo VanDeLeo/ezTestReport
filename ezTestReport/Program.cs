@@ -12,6 +12,8 @@ using ClosedXML.Excel;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Diagnostics;
+//using ezTestReportViewer;
 
 namespace EzTestReport
 {
@@ -31,7 +33,6 @@ namespace EzTestReport
                 {
                     Console.WriteLine("File already exists!");
                     AddToRow(filePath, serialNumber, partNumber, passCount, testStatus, thisDay.ToString("T"), failMode, testResult, testLimits);
-                    
                 }
                 else
                 {
@@ -234,6 +235,18 @@ namespace EzTestReport
                 Console.WriteLine("Data appended!");
 
             }
+        }
+        public void Viewer(string windowType, string viewerPath, string reportPath)
+        {
+            string[] args = { windowType, reportPath};
+
+            string commanLine = viewerPath + " " + windowType + " " + reportPath;
+            Console.WriteLine(commanLine);
+
+            ProcessStartInfo startInfo = new ProcessStartInfo(viewerPath);
+            startInfo.WorkingDirectory = "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReportViewer\\ezTestReportViewer\\bin\\Debug";
+            Process process = Process.Start(commanLine);
+            process.WaitForExit();
         }
     }
 }

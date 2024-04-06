@@ -14,6 +14,9 @@
 	  <Reference Include="ezTestReport">
 	    <HintPath>bin\Debug\net472\ezTestReport.dll</HintPath>
 	  </Reference>
+	  <Reference Include="ezTestReportViewer">
+	    <HintPath>..\..\ezTestReportViewer\ezTestReportViewer\obj\Debug\ezTestReportViewer.exe</HintPath>
+	  </Reference>
 	</ItemGroup>
 
 </Project>
