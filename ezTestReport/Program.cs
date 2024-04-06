@@ -76,7 +76,7 @@ namespace EzTestReport
             var statiticsHeader = ws.Range("J10:L10");
 
             //Vars
-            string version = "ezTestReport v1.0.3";
+            string version = "ezTestReport v1.0.5";
 
             //Header Style
 
@@ -238,15 +238,25 @@ namespace EzTestReport
         }
         public void Viewer(string windowType, string viewerPath, string reportPath)
         {
-            string[] args = { windowType, reportPath};
+            string args = windowType + " " + reportPath;
+            string processName = "ezTestReportViewer";
 
-            string commanLine = viewerPath + " " + windowType + " " + reportPath;
-            Console.WriteLine(commanLine);
+            Process[] processes = Process.GetProcessesByName(processName);
 
-            ProcessStartInfo startInfo = new ProcessStartInfo(viewerPath);
-            startInfo.WorkingDirectory = "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReportViewer\\ezTestReportViewer\\bin\\Debug";
-            Process process = Process.Start(commanLine);
-            process.WaitForExit();
+            if (processes.Length > 0)
+            {
+                Console.WriteLine("Process already running");
+            } else
+            {
+                ProcessStartInfo startInfo = new ProcessStartInfo(viewerPath);
+                startInfo.Arguments = args;
+                startInfo.WorkingDirectory = "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReportViewer\\ezTestReportViewer\\bin\\Debug";
+                Process process = Process.Start(startInfo);
+                process.WaitForExit();
+            }
+
+
+            
         }
     }
 }
