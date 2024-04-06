@@ -3,12 +3,12 @@ using System.IO;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using ClosedXML.Excel;
-using System.Threading;
 
 namespace ezTestReportViewer
 {
     public partial class medium : Form
     {
+        //Global Things
         private static DateTime lastModification;
 
         private static FileSystemWatcher watcher;
@@ -21,7 +21,7 @@ namespace ezTestReportViewer
 
         private static string filePath;
 
-        public medium(string path)
+        public medium(string path, string appVersion)
         {
             InitializeComponent();
 
@@ -35,6 +35,8 @@ namespace ezTestReportViewer
 
             filePath = path;
 
+            version.Text = appVersion;
+
             var (passUnits, failUnits, unitsProcessed) = ReadDocument();
             double fpyPercent = calculateFPY((double)passUnits, (double)unitsProcessed);
             double failPercent = (double)100 - fpyPercent;
@@ -46,14 +48,15 @@ namespace ezTestReportViewer
             fLabel.Text = "Fail Units = " + failUnits.ToString();
             yLabel.Text = fpyPercent.ToString("N2") + "%";
 
-            lastModification = File.GetLastWriteTime(filePath);
+
+            lastModification = File.GetLastWriteTime(filePath); //This is a reference to compare files
             timer.Start();
             watcher.Path = Path.GetDirectoryName(filePath);
             watcher.EnableRaisingEvents = true;
             
         }
 
-        public static void fileModified()
+        public static void fileModified() //If the file was modified this method read it and update the application with new data 
         {
             DateTime newModification = File.GetLastWriteTime(filePath);
             if (newModification != lastModification) 
@@ -96,9 +99,8 @@ namespace ezTestReportViewer
             }
             catch (System.IO.IOException)
             {
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                DialogResult result = MessageBox.Show("File is busy. Please close it and try again!", "Error", buttons);
-                passUnits = 0; failUnits = 0; unitsProcessed = 0;           
+                //This is an easy way to fix the problem in case that the file it's open by another instance. I'll fix it... someday.
+                (passUnits, failUnits, unitsProcessed) = ReadDocument();
             }
 
             return (passUnits, failUnits, unitsProcessed);
@@ -114,5 +116,6 @@ namespace ezTestReportViewer
         {
             fileModified();
         }
+
     }
 }

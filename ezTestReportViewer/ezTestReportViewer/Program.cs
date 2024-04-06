@@ -1,8 +1,16 @@
-﻿using System;
+﻿/* made by leo
+
+Title: EzTestReportViewer
+Autor: leonardo.avalos.montes@continental-corporation.com
+Position: Test Maintenance Technician
+Location: Continental Periferico - Guadalajara
+Date: 18/03/2024
+
+*/
+
+using System;
 using System.IO;
 using System.Windows.Forms;
-using ClosedXML.Excel;
-
 
 namespace ezTestReportViewer
 {
@@ -22,7 +30,8 @@ namespace ezTestReportViewer
         {
             windowType = args[0];
             filePath = args[1];
-            
+
+            string appVersion = "v1.0.1";
 
             if (File.Exists(filePath))
             {
@@ -31,11 +40,12 @@ namespace ezTestReportViewer
 
                 if (windowType == "tiny")
                 {
-                    //Application.Run(new tiny(fpyPercent));
+                    
+                    Application.Run(new tiny(filePath, appVersion));
                 }
                 else if (windowType == "medium")
                 {
-                    Application.Run(new medium(filePath));
+                    Application.Run(new medium(filePath, appVersion));
                 }
                 else if (windowType == "large")
                 {
@@ -44,22 +54,8 @@ namespace ezTestReportViewer
             }
 
         }
-
-        //private static void fileChanged(object sender, FileSystemEventArgs e)
-        //{
-        //    if (e.ChangeType == WatcherChangeTypes.Changed)
-        //    {
-        //        var (passUnits, failUnits, unitsProcessed) = ReadDocument();
-        //        double fpyPercent = calculateFPY((double)passUnits, (double)unitsProcessed);
-
-        //        if (windowType == "medium") 
-        //        {
-        //            medium.fileModified((int)passUnits, (int)failUnits, fpyPercent);
-        //        }
-                
-        //    }
-        //}
-
         
     }
 }
+
+/*goin' hard*/
