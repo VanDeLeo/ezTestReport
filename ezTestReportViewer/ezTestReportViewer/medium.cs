@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -17,9 +19,25 @@ namespace ezTestReportViewer
         private static Label fLabel;
         private static Label yLabel;
 
+        private static Button b1;
+        private static Button b2;
+        private static Button b3;
+        private static Button b4;
+        private static Button b5;
+        private static Button b6;
+        private static Button b7;
+        private static Button b8;
+        private static Button b9;
+        private static Button b10;
+        private static Button b11;
+        private static Button b12;
+        private static Button b13;
+
         private static Chart dChart;
 
         private static string filePath;
+
+        private static List<Button> buttons = new List<Button>();
 
         public medium(string path, string appVersion)
         {
@@ -29,6 +47,20 @@ namespace ezTestReportViewer
             fLabel = failLabel;
             yLabel = fpyLabel;
 
+            buttons.Add(b1 = s1);
+            buttons.Add(b2 = s2);
+            buttons.Add(b3 = s3);
+            buttons.Add(b4 = s4);
+            buttons.Add(b5 = s5);
+            buttons.Add(b6 = s6);
+            buttons.Add(b7 = s7);
+            buttons.Add(b8 = s8);
+            buttons.Add(b9 = s9);
+            buttons.Add(b10 = s10);
+            buttons.Add(b11 = s11);
+            buttons.Add(b12 = s12);
+            buttons.Add(b13 = s13);
+
             dChart = chartFPY;
 
             watcher = fileSystemWatcher1;
@@ -37,7 +69,9 @@ namespace ezTestReportViewer
 
             version.Text = appVersion;
 
-            var (passUnits, failUnits, unitsProcessed) = ReadDocument();
+            int index;
+
+            var (passUnits, failUnits, unitsProcessed, LastTests) = ReadDocument();
             double fpyPercent = calculateFPY((double)passUnits, (double)unitsProcessed);
             double failPercent = (double)100 - fpyPercent;
 
@@ -48,11 +82,24 @@ namespace ezTestReportViewer
             fLabel.Text = "Fail Units = " + failUnits.ToString();
             yLabel.Text = fpyPercent.ToString("N2") + "%";
 
+            foreach(Button button in buttons)
+            {
+                index = buttons.IndexOf(button);
+                if (LastTests[index].ToString() == "P")
+                {
+                    button.BackColor = Color.Green;
+                }
+                else if (LastTests[index].ToString() == "F")
+                {
+                    button.BackColor = Color.Red;
+                }
+            }
 
             lastModification = File.GetLastWriteTime(filePath); //This is a reference to compare files
             timer.Start();
             watcher.Path = Path.GetDirectoryName(filePath);
             watcher.EnableRaisingEvents = true;
+            
             
         }
 
@@ -61,7 +108,8 @@ namespace ezTestReportViewer
             DateTime newModification = File.GetLastWriteTime(filePath);
             if (newModification != lastModification) 
             {
-                var (passUnits, failUnits, unitsProcessed) = ReadDocument();
+                int index;
+                var (passUnits, failUnits, unitsProcessed, lastTests) = ReadDocument();
                 double fpyPercent = calculateFPY((double)passUnits,(double)unitsProcessed);
 
                 double failPercent = (double)100 - fpyPercent;
@@ -74,14 +122,28 @@ namespace ezTestReportViewer
                 dChart.Series["s1"].Points.AddXY("PASS", fpyPercent.ToString("N2"));
                 dChart.Series["s1"].Points.AddXY("FAIL", failPercent.ToString("N2"));
 
+                foreach (Button button in buttons)
+                {
+                    index = buttons.IndexOf(button);
+                    if (lastTests[index].ToString() == "P")
+                    {
+                        button.BackColor = Color.Green;
+                    }
+                    else if (lastTests[index].ToString() == "F")
+                    {
+                        button.BackColor = Color.Red;
+                    }
+                }
+
                 lastModification = newModification;
             }
             
         }
 
-        private static (int, int, int) ReadDocument()
+        private static (int, int, int, List<object>) ReadDocument()
         {
             int passUnits, failUnits, unitsProcessed;
+            List<object> cellsValues = new List<object>();
 
             try
             {
@@ -89,9 +151,40 @@ namespace ezTestReportViewer
                 {
                     var ws = wb.Worksheet("Reports");
 
+                    IXLRange cellsRange = null;
+
                     unitsProcessed = Int32.Parse(ws.Cell("K6").Value.ToString());
                     passUnits = Int32.Parse(ws.Cell("K7").Value.ToString());
                     failUnits = Int32.Parse(ws.Cell("K8").Value.ToString());
+
+                    //Data from last units tested
+                    int lastRowInE = ws.Column("E").LastCellUsed().Address.RowNumber;
+                    int nCells = 13;
+                    int firstCellWithData = 5;
+
+                    if (lastRowInE-firstCellWithData+1 >= nCells)
+                    {
+                       cellsRange = ws.Range(lastRowInE - nCells + 1, 5, lastRowInE, 5);
+                    }
+                    else
+                    {
+                       cellsRange = ws.Range(firstCellWithData, 5, lastRowInE, 5);
+                    }
+
+                    
+                    int nMissingCells = Math.Max(0, 13 - cellsRange.RowCount());
+
+                    for (int i = 0; i < nMissingCells; i++)
+                    {
+                        cellsValues.Add("N");
+                    }
+
+                    foreach (var cell in cellsRange.Cells())
+                    {
+                        cellsValues.Add(cell.Value.ToString());
+                    }
+
+                    
 
                     wb.Dispose();
 
@@ -100,10 +193,10 @@ namespace ezTestReportViewer
             catch (System.IO.IOException)
             {
                 //This is an easy way to fix the problem in case that the file it's open by another instance. I'll fix it... someday.
-                (passUnits, failUnits, unitsProcessed) = ReadDocument();
+                (passUnits, failUnits, unitsProcessed, cellsValues) = ReadDocument();
             }
 
-            return (passUnits, failUnits, unitsProcessed);
+            return (passUnits, failUnits, unitsProcessed, cellsValues);
         }
 
 
