@@ -31,7 +31,7 @@ namespace ezTestReportViewer
             windowType = args[0];
             filePath = args[1];
 
-            string appVersion = "v1.0.1";
+            string appVersion = "v1.0.2";
 
             if (File.Exists(filePath))
             {

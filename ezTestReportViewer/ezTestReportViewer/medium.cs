@@ -35,6 +35,8 @@ namespace ezTestReportViewer
 
         private static Chart dChart;
 
+        //private static ListView historyList;
+
         private static string filePath;
 
         private static List<Button> buttons = new List<Button>();
@@ -94,6 +96,20 @@ namespace ezTestReportViewer
                     button.BackColor = Color.Red;
                 }
             }
+
+            ////Listview
+
+            //historyList = listView1;
+
+            //historyList.View = View.Details;
+            //historyList.GridLines = true;
+            //historyList.FullRowSelect = true;
+
+            //historyList.Columns.Add("Test History");
+
+            
+
+
 
             lastModification = File.GetLastWriteTime(filePath); //This is a reference to compare files
             timer.Start();
@@ -210,5 +226,9 @@ namespace ezTestReportViewer
             fileModified();
         }
 
+        private void chartFPY_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

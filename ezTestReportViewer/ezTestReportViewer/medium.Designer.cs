@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chartFPY = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label1 = new System.Windows.Forms.Label();
             this.fpyLabel = new System.Windows.Forms.Label();
@@ -57,31 +57,41 @@
             this.serialLabel = new System.Windows.Forms.Label();
             this.lastData = new System.Windows.Forms.Label();
             this.version = new System.Windows.Forms.Label();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.Start = new System.Windows.Forms.TabPage();
+            this.History = new System.Windows.Forms.TabPage();
+            this.Fails = new System.Windows.Forms.TabPage();
+            this.Variants = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.chartFPY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.tabControl.SuspendLayout();
+            this.Start.SuspendLayout();
             this.SuspendLayout();
             // 
             // chartFPY
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chartFPY.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartFPY.Legends.Add(legend2);
-            this.chartFPY.Location = new System.Drawing.Point(130, 19);
+            this.chartFPY.BackColor = System.Drawing.Color.Transparent;
+            this.chartFPY.BorderlineColor = System.Drawing.Color.Transparent;
+            chartArea1.Name = "ChartArea1";
+            this.chartFPY.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartFPY.Legends.Add(legend1);
+            this.chartFPY.Location = new System.Drawing.Point(168, 18);
             this.chartFPY.Name = "chartFPY";
             this.chartFPY.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.chartFPY.PaletteCustomColors = new System.Drawing.Color[] {
         System.Drawing.Color.Green,
         System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))))};
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.Legend = "Legend1";
-            series2.Name = "s1";
-            this.chartFPY.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "s1";
+            this.chartFPY.Series.Add(series1);
             this.chartFPY.Size = new System.Drawing.Size(294, 240);
             this.chartFPY.TabIndex = 1;
             this.chartFPY.Text = "chartFPY";
+            this.chartFPY.Click += new System.EventHandler(this.chartFPY_Click);
             // 
             // label1
             // 
@@ -135,6 +145,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.s13);
             this.groupBox1.Controls.Add(this.s12);
             this.groupBox1.Controls.Add(this.s11);
@@ -157,9 +168,9 @@
             this.groupBox1.Controls.Add(this.failLabel);
             this.groupBox1.Controls.Add(this.fpyLabel);
             this.groupBox1.Controls.Add(this.passLabel);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(430, 285);
+            this.groupBox1.Size = new System.Drawing.Size(482, 290);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             // 
@@ -167,7 +178,7 @@
             // 
             this.s13.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s13.Enabled = false;
-            this.s13.Location = new System.Drawing.Point(375, 252);
+            this.s13.Location = new System.Drawing.Point(434, 261);
             this.s13.Name = "s13";
             this.s13.Size = new System.Drawing.Size(17, 23);
             this.s13.TabIndex = 22;
@@ -177,7 +188,7 @@
             // 
             this.s12.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s12.Enabled = false;
-            this.s12.Location = new System.Drawing.Point(352, 252);
+            this.s12.Location = new System.Drawing.Point(411, 261);
             this.s12.Name = "s12";
             this.s12.Size = new System.Drawing.Size(17, 23);
             this.s12.TabIndex = 21;
@@ -187,7 +198,7 @@
             // 
             this.s11.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s11.Enabled = false;
-            this.s11.Location = new System.Drawing.Point(329, 252);
+            this.s11.Location = new System.Drawing.Point(388, 261);
             this.s11.Name = "s11";
             this.s11.Size = new System.Drawing.Size(17, 23);
             this.s11.TabIndex = 20;
@@ -197,7 +208,7 @@
             // 
             this.s10.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s10.Enabled = false;
-            this.s10.Location = new System.Drawing.Point(306, 252);
+            this.s10.Location = new System.Drawing.Point(365, 261);
             this.s10.Name = "s10";
             this.s10.Size = new System.Drawing.Size(17, 23);
             this.s10.TabIndex = 19;
@@ -207,7 +218,7 @@
             // 
             this.s9.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s9.Enabled = false;
-            this.s9.Location = new System.Drawing.Point(283, 252);
+            this.s9.Location = new System.Drawing.Point(342, 261);
             this.s9.Name = "s9";
             this.s9.Size = new System.Drawing.Size(17, 23);
             this.s9.TabIndex = 18;
@@ -217,7 +228,7 @@
             // 
             this.s8.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s8.Enabled = false;
-            this.s8.Location = new System.Drawing.Point(260, 252);
+            this.s8.Location = new System.Drawing.Point(319, 261);
             this.s8.Name = "s8";
             this.s8.Size = new System.Drawing.Size(17, 23);
             this.s8.TabIndex = 17;
@@ -227,7 +238,7 @@
             // 
             this.s7.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s7.Enabled = false;
-            this.s7.Location = new System.Drawing.Point(237, 252);
+            this.s7.Location = new System.Drawing.Point(296, 261);
             this.s7.Name = "s7";
             this.s7.Size = new System.Drawing.Size(17, 23);
             this.s7.TabIndex = 16;
@@ -237,7 +248,7 @@
             // 
             this.s6.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s6.Enabled = false;
-            this.s6.Location = new System.Drawing.Point(214, 252);
+            this.s6.Location = new System.Drawing.Point(273, 261);
             this.s6.Name = "s6";
             this.s6.Size = new System.Drawing.Size(17, 23);
             this.s6.TabIndex = 15;
@@ -247,7 +258,7 @@
             // 
             this.s5.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s5.Enabled = false;
-            this.s5.Location = new System.Drawing.Point(191, 252);
+            this.s5.Location = new System.Drawing.Point(250, 261);
             this.s5.Name = "s5";
             this.s5.Size = new System.Drawing.Size(17, 23);
             this.s5.TabIndex = 14;
@@ -257,7 +268,7 @@
             // 
             this.s4.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s4.Enabled = false;
-            this.s4.Location = new System.Drawing.Point(168, 252);
+            this.s4.Location = new System.Drawing.Point(227, 261);
             this.s4.Name = "s4";
             this.s4.Size = new System.Drawing.Size(17, 23);
             this.s4.TabIndex = 13;
@@ -267,7 +278,7 @@
             // 
             this.s3.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s3.Enabled = false;
-            this.s3.Location = new System.Drawing.Point(145, 252);
+            this.s3.Location = new System.Drawing.Point(204, 261);
             this.s3.Name = "s3";
             this.s3.Size = new System.Drawing.Size(17, 23);
             this.s3.TabIndex = 12;
@@ -277,7 +288,7 @@
             // 
             this.s2.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s2.Enabled = false;
-            this.s2.Location = new System.Drawing.Point(122, 252);
+            this.s2.Location = new System.Drawing.Point(181, 261);
             this.s2.Name = "s2";
             this.s2.Size = new System.Drawing.Size(17, 23);
             this.s2.TabIndex = 11;
@@ -287,7 +298,7 @@
             // 
             this.s1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s1.Enabled = false;
-            this.s1.Location = new System.Drawing.Point(99, 252);
+            this.s1.Location = new System.Drawing.Point(158, 261);
             this.s1.Name = "s1";
             this.s1.Size = new System.Drawing.Size(17, 23);
             this.s1.TabIndex = 10;
@@ -325,29 +336,84 @@
             // 
             this.version.AutoSize = true;
             this.version.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.version.Location = new System.Drawing.Point(10, 257);
+            this.version.Location = new System.Drawing.Point(18, 261);
             this.version.Name = "version";
             this.version.Size = new System.Drawing.Size(37, 13);
             this.version.TabIndex = 6;
             this.version.Text = "v1.0.0";
+            // 
+            // tabControl
+            // 
+            this.tabControl.AllowDrop = true;
+            this.tabControl.Controls.Add(this.Start);
+            this.tabControl.Controls.Add(this.History);
+            this.tabControl.Controls.Add(this.Fails);
+            this.tabControl.Controls.Add(this.Variants);
+            this.tabControl.Location = new System.Drawing.Point(0, 1);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(509, 333);
+            this.tabControl.TabIndex = 7;
+            // 
+            // Start
+            // 
+            this.Start.Controls.Add(this.groupBox1);
+            this.Start.Location = new System.Drawing.Point(4, 22);
+            this.Start.Name = "Start";
+            this.Start.Padding = new System.Windows.Forms.Padding(3);
+            this.Start.Size = new System.Drawing.Size(501, 307);
+            this.Start.TabIndex = 0;
+            this.Start.Text = "Start";
+            this.Start.UseVisualStyleBackColor = true;
+            // 
+            // History
+            // 
+            this.History.Location = new System.Drawing.Point(4, 22);
+            this.History.Name = "History";
+            this.History.Padding = new System.Windows.Forms.Padding(3);
+            this.History.Size = new System.Drawing.Size(501, 307);
+            this.History.TabIndex = 1;
+            this.History.Text = " ";
+            this.History.UseVisualStyleBackColor = true;
+            // 
+            // Fails
+            // 
+            this.Fails.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Fails.Location = new System.Drawing.Point(4, 22);
+            this.Fails.Name = "Fails";
+            this.Fails.Size = new System.Drawing.Size(501, 307);
+            this.Fails.TabIndex = 2;
+            this.Fails.Text = "Fails";
+            this.Fails.UseVisualStyleBackColor = true;
+            // 
+            // Variants
+            // 
+            this.Variants.Location = new System.Drawing.Point(4, 22);
+            this.Variants.Name = "Variants";
+            this.Variants.Size = new System.Drawing.Size(501, 307);
+            this.Variants.TabIndex = 3;
+            this.Variants.Text = "Variants";
+            this.Variants.UseVisualStyleBackColor = true;
             // 
             // medium
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(454, 311);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(504, 331);
+            this.Controls.Add(this.tabControl);
             this.HelpButton = true;
-            this.MaximumSize = new System.Drawing.Size(470, 350);
+            this.MaximumSize = new System.Drawing.Size(520, 370);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(470, 350);
+            this.MinimumSize = new System.Drawing.Size(520, 370);
             this.Name = "medium";
-            this.Text = "ezTestReportViewer";
+            this.Text = "ezTestReport";
             ((System.ComponentModel.ISupportInitialize)(this.chartFPY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabControl.ResumeLayout(false);
+            this.Start.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -379,5 +445,10 @@
         private System.Windows.Forms.Button s7;
         private System.Windows.Forms.Button s6;
         private System.Windows.Forms.Button s5;
+        private System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.TabPage Start;
+        private System.Windows.Forms.TabPage History;
+        private System.Windows.Forms.TabPage Fails;
+        private System.Windows.Forms.TabPage Variants;
     }
 }
