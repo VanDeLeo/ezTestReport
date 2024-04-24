@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using ClosedXML.Excel;
@@ -35,7 +36,7 @@ namespace ezTestReportViewer
 
         private static Chart dChart;
 
-        //private static ListView historyList;
+        private static ListBox historyList;
 
         private static string filePath;
 
@@ -71,9 +72,11 @@ namespace ezTestReportViewer
 
             version.Text = appVersion;
 
+            historyList = listBox1;
+
             int index;
 
-            var (passUnits, failUnits, unitsProcessed, LastTests) = ReadDocument();
+            var (passUnits, failUnits, unitsProcessed, LastTests, historyData) = ReadDocument();
             double fpyPercent = calculateFPY((double)passUnits, (double)unitsProcessed);
             double failPercent = (double)100 - fpyPercent;
 
@@ -97,18 +100,8 @@ namespace ezTestReportViewer
                 }
             }
 
-            ////Listview
 
-            //historyList = listView1;
-
-            //historyList.View = View.Details;
-            //historyList.GridLines = true;
-            //historyList.FullRowSelect = true;
-
-            //historyList.Columns.Add("Test History");
-
-            
-
+            historyData.ToList().ForEach(item => historyList.Items.Add(item));
 
 
             lastModification = File.GetLastWriteTime(filePath); //This is a reference to compare files
@@ -125,7 +118,7 @@ namespace ezTestReportViewer
             if (newModification != lastModification) 
             {
                 int index;
-                var (passUnits, failUnits, unitsProcessed, lastTests) = ReadDocument();
+                var (passUnits, failUnits, unitsProcessed, lastTests, historyData) = ReadDocument();
                 double fpyPercent = calculateFPY((double)passUnits,(double)unitsProcessed);
 
                 double failPercent = (double)100 - fpyPercent;
@@ -150,16 +143,19 @@ namespace ezTestReportViewer
                         button.BackColor = Color.Red;
                     }
                 }
+                historyList.Items.Clear();
+                historyData.ToList().ForEach(item => historyList.Items.Add(item));
 
                 lastModification = newModification;
             }
             
         }
 
-        private static (int, int, int, List<object>) ReadDocument()
+        private static (int, int, int, List<object>, List<string>) ReadDocument()
         {
             int passUnits, failUnits, unitsProcessed;
             List<object> cellsValues = new List<object>();
+            List<string> historyRows = new List<string>();
 
             try
             {
@@ -168,10 +164,34 @@ namespace ezTestReportViewer
                     var ws = wb.Worksheet("Reports");
 
                     IXLRange cellsRange = null;
+                    IXLRange historyRange = null;
 
-                    unitsProcessed = Int32.Parse(ws.Cell("K6").Value.ToString());
-                    passUnits = Int32.Parse(ws.Cell("K7").Value.ToString());
-                    failUnits = Int32.Parse(ws.Cell("K8").Value.ToString());
+                    try
+                    {
+                        unitsProcessed = Int32.Parse(ws.Cell("L6").Value.ToString());
+                        passUnits = Int32.Parse(ws.Cell("L7").Value.ToString());
+                        failUnits = Int32.Parse(ws.Cell("L8").Value.ToString());
+                    }
+                    catch (System.FormatException)
+                    {
+                        MessageBox.Show("Bad structure in excel file","Error in Excel file");
+                        throw;
+                    }
+
+                    int lastRowUsedHistory = ws.Range("B:J").LastRowUsed().RowNumber();
+                    int startRow = Math.Max(5,lastRowUsedHistory-49);
+                    historyRange = ws.Range(startRow, 2, lastRowUsedHistory, 10);
+
+                    
+
+                    foreach (var row in historyRange.Rows())
+                    {
+                        string concatenatedRow = string.Join(" , ", row.Cells().Select(cell => cell.Value.ToString()));
+                        historyRows.Add(concatenatedRow);
+                        
+                    }
+
+                    historyRows.Reverse();
 
                     //Data from last units tested
                     int lastRowInE = ws.Column("E").LastCellUsed().Address.RowNumber;
@@ -209,10 +229,10 @@ namespace ezTestReportViewer
             catch (System.IO.IOException)
             {
                 //This is an easy way to fix the problem in case that the file it's open by another instance. I'll fix it... someday.
-                (passUnits, failUnits, unitsProcessed, cellsValues) = ReadDocument();
+                (passUnits, failUnits, unitsProcessed, cellsValues, historyRows) = ReadDocument();
             }
 
-            return (passUnits, failUnits, unitsProcessed, cellsValues);
+            return (passUnits, failUnits, unitsProcessed, cellsValues, historyRows);
         }
 
 
@@ -226,9 +246,14 @@ namespace ezTestReportViewer
             fileModified();
         }
 
-        private void chartFPY_Click(object sender, EventArgs e)
+        private void copyAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            string textToCopy = "";
+            foreach (string item in historyList.Items)
+            {
+                textToCopy += item + Environment.NewLine;
+            }
+            Clipboard.SetText(textToCopy);
         }
     }
 }
