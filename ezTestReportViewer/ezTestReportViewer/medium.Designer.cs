@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chartFPY = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label1 = new System.Windows.Forms.Label();
             this.fpyLabel = new System.Windows.Forms.Label();
@@ -61,10 +61,12 @@
             this.Start = new System.Windows.Forms.TabPage();
             this.History = new System.Windows.Forms.TabPage();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.Fails = new System.Windows.Forms.TabPage();
-            this.Variants = new System.Windows.Forms.TabPage();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Fails = new System.Windows.Forms.TabPage();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyAllToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.chartFPY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -72,27 +74,29 @@
             this.Start.SuspendLayout();
             this.History.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.Fails.SuspendLayout();
+            this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // chartFPY
             // 
             this.chartFPY.BackColor = System.Drawing.Color.Transparent;
             this.chartFPY.BorderlineColor = System.Drawing.Color.Transparent;
-            chartArea5.Name = "ChartArea1";
-            this.chartFPY.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chartFPY.Legends.Add(legend5);
+            chartArea1.Name = "ChartArea1";
+            this.chartFPY.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartFPY.Legends.Add(legend1);
             this.chartFPY.Location = new System.Drawing.Point(168, 18);
             this.chartFPY.Name = "chartFPY";
             this.chartFPY.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.chartFPY.PaletteCustomColors = new System.Drawing.Color[] {
         System.Drawing.Color.Green,
         System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))))};
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series5.Legend = "Legend1";
-            series5.Name = "s1";
-            this.chartFPY.Series.Add(series5);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "s1";
+            this.chartFPY.Series.Add(series1);
             this.chartFPY.Size = new System.Drawing.Size(294, 240);
             this.chartFPY.TabIndex = 1;
             this.chartFPY.Text = "chartFPY";
@@ -352,7 +356,6 @@
             this.tabControl.Controls.Add(this.Start);
             this.tabControl.Controls.Add(this.History);
             this.tabControl.Controls.Add(this.Fails);
-            this.tabControl.Controls.Add(this.Variants);
             this.tabControl.Location = new System.Drawing.Point(0, 1);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -393,9 +396,24 @@
             this.listBox1.Size = new System.Drawing.Size(489, 284);
             this.listBox1.TabIndex = 0;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyAllToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(120, 26);
+            // 
+            // copyAllToolStripMenuItem
+            // 
+            this.copyAllToolStripMenuItem.Name = "copyAllToolStripMenuItem";
+            this.copyAllToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.copyAllToolStripMenuItem.Text = "Copy All";
+            this.copyAllToolStripMenuItem.Click += new System.EventHandler(this.copyAllToolStripMenuItem_Click);
+            // 
             // Fails
             // 
             this.Fails.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Fails.Controls.Add(this.listBox2);
             this.Fails.Location = new System.Drawing.Point(4, 22);
             this.Fails.Name = "Fails";
             this.Fails.Size = new System.Drawing.Size(501, 307);
@@ -403,28 +421,31 @@
             this.Fails.Text = "Fails";
             this.Fails.UseVisualStyleBackColor = true;
             // 
-            // Variants
+            // listBox2
             // 
-            this.Variants.Location = new System.Drawing.Point(4, 22);
-            this.Variants.Name = "Variants";
-            this.Variants.Size = new System.Drawing.Size(501, 307);
-            this.Variants.TabIndex = 3;
-            this.Variants.Text = "Variants";
-            this.Variants.UseVisualStyleBackColor = true;
+            this.listBox2.ContextMenuStrip = this.contextMenuStrip2;
+            this.listBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.HorizontalScrollbar = true;
+            this.listBox2.ItemHeight = 20;
+            this.listBox2.Location = new System.Drawing.Point(6, 11);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(489, 284);
+            this.listBox2.TabIndex = 1;
             // 
-            // contextMenuStrip1
+            // contextMenuStrip2
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.copyAllToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyAllToolStripMenuItem1});
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(181, 48);
             // 
-            // copyAllToolStripMenuItem
+            // copyAllToolStripMenuItem1
             // 
-            this.copyAllToolStripMenuItem.Name = "copyAllToolStripMenuItem";
-            this.copyAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.copyAllToolStripMenuItem.Text = "Copy All";
-            this.copyAllToolStripMenuItem.Click += new System.EventHandler(this.copyAllToolStripMenuItem_Click);
+            this.copyAllToolStripMenuItem1.Name = "copyAllToolStripMenuItem1";
+            this.copyAllToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.copyAllToolStripMenuItem1.Text = "Copy All";
+            this.copyAllToolStripMenuItem1.Click += new System.EventHandler(this.copyAllToolStripMenuItem1_Click);
             // 
             // medium
             // 
@@ -447,6 +468,8 @@
             this.Start.ResumeLayout(false);
             this.History.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
+            this.Fails.ResumeLayout(false);
+            this.contextMenuStrip2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -482,9 +505,11 @@
         private System.Windows.Forms.TabPage Start;
         private System.Windows.Forms.TabPage History;
         private System.Windows.Forms.TabPage Fails;
-        private System.Windows.Forms.TabPage Variants;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem copyAllToolStripMenuItem;
+        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem copyAllToolStripMenuItem1;
     }
 }
