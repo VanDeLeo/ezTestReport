@@ -40,6 +40,8 @@ namespace ezTestReportViewer
         private static Button b18;
         private static Chart dChart;
 
+        private static ToolTip tip;
+
         private static ListBox historyList;
         private static ListBox failsList;
 
@@ -75,6 +77,8 @@ namespace ezTestReportViewer
             buttons.Add(b18 = s18);
            
             dChart = chartFPY;
+
+            tip = toolTip1;
 
             watcher = fileSystemWatcher1;
 
@@ -113,7 +117,7 @@ namespace ezTestReportViewer
                     button.BackColor = Color.Red;
                 }
 
-                toolTip1.SetToolTip(button, hintsValues[index]);
+                tip.SetToolTip(button, hintsValues[index]);
             }
 
             //History & Fails ListBox Tab
@@ -148,6 +152,9 @@ namespace ezTestReportViewer
                 dChart.Series["s1"].Points.AddXY("PASS", fpyPercent.ToString("N2"));
                 dChart.Series["s1"].Points.AddXY("FAIL", failPercent.ToString("N2"));
 
+                lastTests.Reverse();
+                hintsValues.Reverse();
+
                 foreach (Button button in buttons)
                 {
                     index = buttons.IndexOf(button);
@@ -159,6 +166,7 @@ namespace ezTestReportViewer
                     {
                         button.BackColor = Color.Red;
                     }
+                    tip.SetToolTip(button, hintsValues[index]);
                 }
 
                 //History & Fails ListBox Tab
