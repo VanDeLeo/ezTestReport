@@ -52,7 +52,6 @@
             this.s4 = new System.Windows.Forms.Button();
             this.s3 = new System.Windows.Forms.Button();
             this.s2 = new System.Windows.Forms.Button();
-            this.s1 = new System.Windows.Forms.Button();
             this.cycleDuty = new System.Windows.Forms.Label();
             this.serialLabel = new System.Windows.Forms.Label();
             this.lastData = new System.Windows.Forms.Label();
@@ -67,6 +66,12 @@
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyAllToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.s1 = new System.Windows.Forms.Button();
+            this.s14 = new System.Windows.Forms.Button();
+            this.s15 = new System.Windows.Forms.Button();
+            this.s16 = new System.Windows.Forms.Button();
+            this.s17 = new System.Windows.Forms.Button();
+            this.s18 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chartFPY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -154,6 +159,12 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.s18);
+            this.groupBox1.Controls.Add(this.s17);
+            this.groupBox1.Controls.Add(this.s16);
+            this.groupBox1.Controls.Add(this.s15);
+            this.groupBox1.Controls.Add(this.s14);
+            this.groupBox1.Controls.Add(this.s1);
             this.groupBox1.Controls.Add(this.s13);
             this.groupBox1.Controls.Add(this.s12);
             this.groupBox1.Controls.Add(this.s11);
@@ -166,7 +177,6 @@
             this.groupBox1.Controls.Add(this.s4);
             this.groupBox1.Controls.Add(this.s3);
             this.groupBox1.Controls.Add(this.s2);
-            this.groupBox1.Controls.Add(this.s1);
             this.groupBox1.Controls.Add(this.cycleDuty);
             this.groupBox1.Controls.Add(this.serialLabel);
             this.groupBox1.Controls.Add(this.lastData);
@@ -186,7 +196,7 @@
             // 
             this.s13.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s13.Enabled = false;
-            this.s13.Location = new System.Drawing.Point(434, 261);
+            this.s13.Location = new System.Drawing.Point(344, 256);
             this.s13.Name = "s13";
             this.s13.Size = new System.Drawing.Size(17, 23);
             this.s13.TabIndex = 22;
@@ -196,7 +206,7 @@
             // 
             this.s12.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s12.Enabled = false;
-            this.s12.Location = new System.Drawing.Point(411, 261);
+            this.s12.Location = new System.Drawing.Point(321, 256);
             this.s12.Name = "s12";
             this.s12.Size = new System.Drawing.Size(17, 23);
             this.s12.TabIndex = 21;
@@ -206,7 +216,7 @@
             // 
             this.s11.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s11.Enabled = false;
-            this.s11.Location = new System.Drawing.Point(388, 261);
+            this.s11.Location = new System.Drawing.Point(298, 256);
             this.s11.Name = "s11";
             this.s11.Size = new System.Drawing.Size(17, 23);
             this.s11.TabIndex = 20;
@@ -216,7 +226,7 @@
             // 
             this.s10.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s10.Enabled = false;
-            this.s10.Location = new System.Drawing.Point(365, 261);
+            this.s10.Location = new System.Drawing.Point(275, 256);
             this.s10.Name = "s10";
             this.s10.Size = new System.Drawing.Size(17, 23);
             this.s10.TabIndex = 19;
@@ -226,7 +236,7 @@
             // 
             this.s9.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s9.Enabled = false;
-            this.s9.Location = new System.Drawing.Point(342, 261);
+            this.s9.Location = new System.Drawing.Point(252, 256);
             this.s9.Name = "s9";
             this.s9.Size = new System.Drawing.Size(17, 23);
             this.s9.TabIndex = 18;
@@ -236,7 +246,7 @@
             // 
             this.s8.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s8.Enabled = false;
-            this.s8.Location = new System.Drawing.Point(319, 261);
+            this.s8.Location = new System.Drawing.Point(229, 256);
             this.s8.Name = "s8";
             this.s8.Size = new System.Drawing.Size(17, 23);
             this.s8.TabIndex = 17;
@@ -246,7 +256,7 @@
             // 
             this.s7.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s7.Enabled = false;
-            this.s7.Location = new System.Drawing.Point(296, 261);
+            this.s7.Location = new System.Drawing.Point(206, 256);
             this.s7.Name = "s7";
             this.s7.Size = new System.Drawing.Size(17, 23);
             this.s7.TabIndex = 16;
@@ -256,7 +266,7 @@
             // 
             this.s6.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s6.Enabled = false;
-            this.s6.Location = new System.Drawing.Point(273, 261);
+            this.s6.Location = new System.Drawing.Point(183, 256);
             this.s6.Name = "s6";
             this.s6.Size = new System.Drawing.Size(17, 23);
             this.s6.TabIndex = 15;
@@ -266,7 +276,7 @@
             // 
             this.s5.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s5.Enabled = false;
-            this.s5.Location = new System.Drawing.Point(250, 261);
+            this.s5.Location = new System.Drawing.Point(160, 256);
             this.s5.Name = "s5";
             this.s5.Size = new System.Drawing.Size(17, 23);
             this.s5.TabIndex = 14;
@@ -276,7 +286,7 @@
             // 
             this.s4.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s4.Enabled = false;
-            this.s4.Location = new System.Drawing.Point(227, 261);
+            this.s4.Location = new System.Drawing.Point(137, 256);
             this.s4.Name = "s4";
             this.s4.Size = new System.Drawing.Size(17, 23);
             this.s4.TabIndex = 13;
@@ -286,9 +296,9 @@
             // 
             this.s3.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s3.Enabled = false;
-            this.s3.Location = new System.Drawing.Point(204, 261);
+            this.s3.Location = new System.Drawing.Point(113, 256);
             this.s3.Name = "s3";
-            this.s3.Size = new System.Drawing.Size(17, 23);
+            this.s3.Size = new System.Drawing.Size(18, 23);
             this.s3.TabIndex = 12;
             this.s3.UseVisualStyleBackColor = false;
             // 
@@ -296,21 +306,11 @@
             // 
             this.s2.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s2.Enabled = false;
-            this.s2.Location = new System.Drawing.Point(181, 261);
+            this.s2.Location = new System.Drawing.Point(90, 256);
             this.s2.Name = "s2";
             this.s2.Size = new System.Drawing.Size(17, 23);
             this.s2.TabIndex = 11;
             this.s2.UseVisualStyleBackColor = false;
-            // 
-            // s1
-            // 
-            this.s1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.s1.Enabled = false;
-            this.s1.Location = new System.Drawing.Point(158, 261);
-            this.s1.Name = "s1";
-            this.s1.Size = new System.Drawing.Size(17, 23);
-            this.s1.TabIndex = 10;
-            this.s1.UseVisualStyleBackColor = false;
             // 
             // cycleDuty
             // 
@@ -398,6 +398,7 @@
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.copyAllToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
@@ -435,17 +436,78 @@
             // 
             // contextMenuStrip2
             // 
+            this.contextMenuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.copyAllToolStripMenuItem1});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(181, 48);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(120, 26);
             // 
             // copyAllToolStripMenuItem1
             // 
             this.copyAllToolStripMenuItem1.Name = "copyAllToolStripMenuItem1";
-            this.copyAllToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.copyAllToolStripMenuItem1.Size = new System.Drawing.Size(119, 22);
             this.copyAllToolStripMenuItem1.Text = "Copy All";
             this.copyAllToolStripMenuItem1.Click += new System.EventHandler(this.copyAllToolStripMenuItem1_Click);
+            // 
+            // s1
+            // 
+            this.s1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.s1.Enabled = false;
+            this.s1.Location = new System.Drawing.Point(67, 256);
+            this.s1.Name = "s1";
+            this.s1.Size = new System.Drawing.Size(17, 23);
+            this.s1.TabIndex = 23;
+            this.s1.UseVisualStyleBackColor = false;
+            // 
+            // s14
+            // 
+            this.s14.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.s14.Enabled = false;
+            this.s14.Location = new System.Drawing.Point(367, 256);
+            this.s14.Name = "s14";
+            this.s14.Size = new System.Drawing.Size(17, 23);
+            this.s14.TabIndex = 24;
+            this.s14.UseVisualStyleBackColor = false;
+            // 
+            // s15
+            // 
+            this.s15.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.s15.Enabled = false;
+            this.s15.Location = new System.Drawing.Point(390, 256);
+            this.s15.Name = "s15";
+            this.s15.Size = new System.Drawing.Size(17, 23);
+            this.s15.TabIndex = 25;
+            this.s15.UseVisualStyleBackColor = false;
+            // 
+            // s16
+            // 
+            this.s16.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.s16.Enabled = false;
+            this.s16.Location = new System.Drawing.Point(413, 256);
+            this.s16.Name = "s16";
+            this.s16.Size = new System.Drawing.Size(17, 23);
+            this.s16.TabIndex = 26;
+            this.s16.UseVisualStyleBackColor = false;
+            // 
+            // s17
+            // 
+            this.s17.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.s17.Enabled = false;
+            this.s17.Location = new System.Drawing.Point(436, 256);
+            this.s17.Name = "s17";
+            this.s17.Size = new System.Drawing.Size(17, 23);
+            this.s17.TabIndex = 27;
+            this.s17.UseVisualStyleBackColor = false;
+            // 
+            // s18
+            // 
+            this.s18.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.s18.Enabled = false;
+            this.s18.Location = new System.Drawing.Point(459, 256);
+            this.s18.Name = "s18";
+            this.s18.Size = new System.Drawing.Size(17, 23);
+            this.s18.TabIndex = 28;
+            this.s18.UseVisualStyleBackColor = false;
             // 
             // medium
             // 
@@ -455,11 +517,13 @@
             this.ClientSize = new System.Drawing.Size(504, 331);
             this.Controls.Add(this.tabControl);
             this.HelpButton = true;
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(520, 370);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(520, 370);
             this.Name = "medium";
             this.Text = "ezTestReport";
+            this.Load += new System.EventHandler(this.medium_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chartFPY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -490,7 +554,6 @@
         private System.Windows.Forms.Button s4;
         private System.Windows.Forms.Button s3;
         private System.Windows.Forms.Button s2;
-        private System.Windows.Forms.Button s1;
         private System.Windows.Forms.Label cycleDuty;
         private System.Windows.Forms.Button s13;
         private System.Windows.Forms.Button s12;
@@ -511,5 +574,11 @@
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.ToolStripMenuItem copyAllToolStripMenuItem1;
+        private System.Windows.Forms.Button s18;
+        private System.Windows.Forms.Button s17;
+        private System.Windows.Forms.Button s16;
+        private System.Windows.Forms.Button s15;
+        private System.Windows.Forms.Button s14;
+        private System.Windows.Forms.Button s1;
     }
 }

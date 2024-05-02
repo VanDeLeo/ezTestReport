@@ -33,7 +33,11 @@ namespace ezTestReportViewer
         private static Button b11;
         private static Button b12;
         private static Button b13;
-
+        private static Button b14;
+        private static Button b15;
+        private static Button b16;
+        private static Button b17;
+        private static Button b18;
         private static Chart dChart;
 
         private static ListBox historyList;
@@ -64,7 +68,12 @@ namespace ezTestReportViewer
             buttons.Add(b11 = s11);
             buttons.Add(b12 = s12);
             buttons.Add(b13 = s13);
-
+            buttons.Add(b14 = s14);
+            buttons.Add(b15 = s15);
+            buttons.Add(b16 = s16);
+            buttons.Add(b17 = s17);
+            buttons.Add(b18 = s18);
+           
             dChart = chartFPY;
 
             watcher = fileSystemWatcher1;
@@ -214,7 +223,7 @@ namespace ezTestReportViewer
 
                     //Data from last units tested
                     int lastRowInE = ws.Column("E").LastCellUsed().Address.RowNumber;//Unify variables
-                    int nCells = 13;
+                    int nCells = 18;
                     int firstCellWithData = 5;
 
                     if (lastRowInE-firstCellWithData+1 >= nCells)
@@ -283,6 +292,11 @@ namespace ezTestReportViewer
                 textToCopy += item + Environment.NewLine;
             }
             Clipboard.SetText(textToCopy);
+        }
+
+        private void medium_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
