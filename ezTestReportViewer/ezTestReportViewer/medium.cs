@@ -87,7 +87,7 @@ namespace ezTestReportViewer
 
             int index;
 
-            var (passUnits, failUnits, unitsProcessed, LastTests, historyData, failsData) = ReadDocument();
+            var (passUnits, failUnits, unitsProcessed, LastTests, historyData, failsData, hintsValues) = ReadDocument();
             double fpyPercent = calculateFPY((double)passUnits, (double)unitsProcessed);
             double failPercent = (double)100 - fpyPercent;
 
@@ -97,6 +97,9 @@ namespace ezTestReportViewer
             pLabel.Text = "Pass Units = " + passUnits.ToString();
             fLabel.Text = "Fail Units = " + failUnits.ToString();
             yLabel.Text = fpyPercent.ToString("N2") + "%";
+
+            LastTests.Reverse();
+            hintsValues.Reverse();
 
             foreach(Button button in buttons)
             {
@@ -109,6 +112,8 @@ namespace ezTestReportViewer
                 {
                     button.BackColor = Color.Red;
                 }
+
+                toolTip1.SetToolTip(button, hintsValues[index]);
             }
 
             //History & Fails ListBox Tab
@@ -130,7 +135,7 @@ namespace ezTestReportViewer
             if (newModification != lastModification) 
             {
                 int index;
-                var (passUnits, failUnits, unitsProcessed, lastTests, historyData, failsData) = ReadDocument();
+                var (passUnits, failUnits, unitsProcessed, lastTests, historyData, failsData, hintsValues) = ReadDocument();
                 double fpyPercent = calculateFPY((double)passUnits,(double)unitsProcessed);
 
                 double failPercent = (double)100 - fpyPercent;
@@ -167,10 +172,12 @@ namespace ezTestReportViewer
             
         }
 
-        private static (int, int, int, List<object>, List<string>, List<string>) ReadDocument()
+        private static (int, int, int, List<string>, List<string>, List<string>, List<string>) ReadDocument()
         {
             int passUnits, failUnits, unitsProcessed;
-            List<object> cellsValues = new List<object>();
+            int nButtons = 18;
+            List<string> buttonValues = new List<string>();
+            List<string> hints = new List<string>();
             List<string> historyRows = new List<string>();
             List<string> failsRows = new List<string>();
 
@@ -180,7 +187,7 @@ namespace ezTestReportViewer
                 {
                     var ws = wb.Worksheet("Reports");
 
-                    IXLRange cellsRange = null;
+                    //IXLRange cellsRange = null;
                     IXLRange historyRange = null;
                     IXLRange failsRange = null;
 
@@ -221,34 +228,30 @@ namespace ezTestReportViewer
                     failsRows.Reverse();
                     historyRows.Reverse();
 
-                    //Data from last units tested
-                    int lastRowInE = ws.Column("E").LastCellUsed().Address.RowNumber;//Unify variables
-                    int nCells = 18;
-                    int firstCellWithData = 5;
-
-                    if (lastRowInE-firstCellWithData+1 >= nCells)
+                    if (historyRows.Count >= nButtons)
                     {
-                       cellsRange = ws.Range(lastRowInE - nCells + 1, 5, lastRowInE, 5);
-                    }
-                    else
+                        for (int row = 0; row < nButtons; row++)
+                        {
+                            hints.Add(historyRows[row]);
+                            string[] rowData = historyRows[row].Split(',');
+                            buttonValues.Add(rowData[3].Replace(" ",""));
+                        }
+                    } else
                     {
-                       cellsRange = ws.Range(firstCellWithData, 5, lastRowInE, 5);
+                        int rowsOffset = nButtons - historyRows.Count;
+
+                        for (int  i = 0; i < rowsOffset; i++)
+                        {
+                            buttonValues.Add("N");
+                            hints.Add("Empty");
+                        }
+                        for (int row = 0; row < nButtons; row++)
+                        {
+                            hints.Add(historyRows[row]);
+                            string[] rowData = historyRows[row].Split(',');
+                            buttonValues.Add(rowData[3].Replace(" ", ""));
+                        }
                     }
-
-                    
-                    int nMissingCells = Math.Max(0, 13 - cellsRange.RowCount());
-
-                    for (int i = 0; i < nMissingCells; i++)
-                    {
-                        cellsValues.Add("N");
-                    }
-
-                    foreach (var cell in cellsRange.Cells())
-                    {
-                        cellsValues.Add(cell.Value.ToString());
-                    }
-
-                    
 
                     wb.Dispose();
 
@@ -257,10 +260,10 @@ namespace ezTestReportViewer
             catch (System.IO.IOException)
             {
                 //This is an easy way to fix the problem in case that the file it's open by another instance. I'll fix it... someday.
-                (passUnits, failUnits, unitsProcessed, cellsValues, historyRows, failsRows) = ReadDocument();
+                (passUnits, failUnits, unitsProcessed, buttonValues, historyRows, failsRows, hints) = ReadDocument();
             }
 
-            return (passUnits, failUnits, unitsProcessed, cellsValues, historyRows, failsRows);
+            return (passUnits, failUnits, unitsProcessed, buttonValues, historyRows, failsRows, hints);
         }
 
 
@@ -295,6 +298,21 @@ namespace ezTestReportViewer
         }
 
         private void medium_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void s5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void s6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void s7_Click(object sender, EventArgs e)
         {
 
         }
