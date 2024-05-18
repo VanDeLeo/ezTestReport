@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ydBs0qlgkD8Td4m5SC25J4sFGZi+QNpsu7nH8Yj9J3VBJEzpH8KeLzYhrDK5IR37fghklvwsT48LAD/JfP969g==",
+  "dgSpecHash": "4f89VHwwPURf6dm1WE3/Qj3kbPGrLwIrjjnewfe+04k8BdroWuZpxH+VSxHSPdIwH00mRQZlZhv6VjtRFe7fcg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReport\\ezTestReport.csproj",
+  "projectFilePath": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReport\\ezTestReport\\ezTestReport.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\leoav\\.nuget\\packages\\closedxml\\0.102.2\\closedxml.0.102.2.nupkg.sha512",
     "C:\\Users\\leoav\\.nuget\\packages\\documentformat.openxml\\2.20.0\\documentformat.openxml.2.20.0.nupkg.sha512",

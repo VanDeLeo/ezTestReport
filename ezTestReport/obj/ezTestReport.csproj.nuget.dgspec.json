@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReport\\ezTestReport.csproj": {}
+    "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReport\\ezTestReport\\ezTestReport.csproj": {}
   },
   "projects": {
-    "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReport\\ezTestReport.csproj": {
+    "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReport\\ezTestReport\\ezTestReport.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReport\\ezTestReport.csproj",
+        "projectUniqueName": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReport\\ezTestReport\\ezTestReport.csproj",
         "projectName": "ezTestReport",
-        "projectPath": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReport\\ezTestReport.csproj",
+        "projectPath": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReport\\ezTestReport\\ezTestReport.csproj",
         "packagesPath": "C:\\Users\\leoav\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReport\\obj\\",
+        "outputPath": "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReport\\ezTestReport\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\leoav\\AppData\\Roaming\\NuGet\\NuGet.Config",

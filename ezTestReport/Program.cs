@@ -243,6 +243,9 @@ namespace EzTestReport
             string args = windowType + " " + reportPath;
             string processName = "ezTestReportViewer";
 
+            string workingPath = Path.GetDirectoryName(viewerPath);
+            Console.WriteLine(workingPath);
+
             Process[] processes = Process.GetProcessesByName(processName);
 
             if (processes.Length > 0)
@@ -252,7 +255,7 @@ namespace EzTestReport
             {
                 ProcessStartInfo startInfo = new ProcessStartInfo(viewerPath);
                 startInfo.Arguments = args;
-                startInfo.WorkingDirectory = "C:\\Users\\leoav\\OneDrive\\Documentos\\Proyectos\\TestExec\\ezTestReport\\ezTestReportViewer\\ezTestReportViewer\\bin\\Debug";
+                startInfo.WorkingDirectory = workingPath;
                 Process process = Process.Start(startInfo);
                 process.WaitForExit();
             }
