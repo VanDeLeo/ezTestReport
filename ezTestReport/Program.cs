@@ -238,30 +238,45 @@ namespace EzTestReport
 
             }
         }
-        public void Viewer(string windowType, string viewerPath, string reportPath)
+        public void Viewer(string windowType, string viewerPath, string reportPath, out string errorMessage, out int exeStatus)
         {
-            string args = windowType + " " + reportPath;
-            string processName = "ezTestReportViewer";
-
-            string workingPath = Path.GetDirectoryName(viewerPath);
-            Console.WriteLine(workingPath);
-
-            Process[] processes = Process.GetProcessesByName(processName);
-
-            if (processes.Length > 0)
+            if (File.Exists(viewerPath))
             {
-                Console.WriteLine("Process already running");
-            } else
-            {
-                ProcessStartInfo startInfo = new ProcessStartInfo(viewerPath);
-                startInfo.Arguments = args;
-                startInfo.WorkingDirectory = workingPath;
-                Process process = Process.Start(startInfo);
-                process.WaitForExit();
+                if (File.Exists(reportPath))
+                {
+                    string args = windowType + " " + reportPath;
+                    string processName = "ezTestReportViewer";
+
+                    string workingPath = Path.GetDirectoryName(viewerPath);
+
+                    Process[] processes = Process.GetProcessesByName(processName);
+
+                    if (processes.Length > 0)
+                    {
+                        Console.WriteLine("Process already running");
+                        exeStatus = 0;
+                    }
+                    else
+                    {
+                        ProcessStartInfo startInfo = new ProcessStartInfo(viewerPath);
+                        startInfo.Arguments = args;
+                        startInfo.WorkingDirectory = workingPath;
+                        Process process = Process.Start(startInfo);
+                        process.WaitForExit();
+                        exeStatus = 1;
+                    }
+                    errorMessage = "";
+                }
+                else
+                {
+                    errorMessage = "Report file cannot be located in " + reportPath;
+                }
             }
-
-
-            
+            else
+            {
+                errorMessage = "ezTestReportViewer.exe cannot be located in " + viewerPath;
+            }
+            exeStatus = 2;
         }
     }
 }
