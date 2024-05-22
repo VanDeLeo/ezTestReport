@@ -75,7 +75,7 @@ namespace EzTestReport
             var statiticsHeader = ws.Range("K10:M10");
 
             //Vars
-            string version = "ezTestReport v1.1.0";
+            string version = "ezTestReport v1.1.1";
 
             //Header Style
 
@@ -237,13 +237,13 @@ namespace EzTestReport
 
             }
         }
-        public void Viewer(string windowType, string viewerPath, string reportPath, out string errorMessage, out int result)
+        public void Viewer(string viewerPath, string reportPath, out string errorMessage, out int result)
         {
             if (File.Exists(viewerPath))
             {
                 if (File.Exists(reportPath))
                 {
-                    string args = windowType + " " + reportPath;
+                    string args = reportPath;
                     string processName = "ezTestReportViewer";
 
                     string workingPath = Path.GetDirectoryName(viewerPath);

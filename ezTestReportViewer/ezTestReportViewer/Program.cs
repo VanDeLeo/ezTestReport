@@ -28,29 +28,17 @@ namespace ezTestReportViewer
 
         private protected static void Main(string[] args)
         {
-            windowType = args[0];
-            filePath = args[1];
+            filePath = args[0];
 
-            string appVersion = "v1.0.8";
+            string appVersion = "v1.1.1";
 
             if (File.Exists(filePath))
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
 
-                if (windowType == "tiny")
-                {
-                    
-                    Application.Run(new tiny(filePath, appVersion));
-                }
-                else if (windowType == "medium")
-                {
-                    Application.Run(new medium(filePath, appVersion));
-                }
-                else if (windowType == "large")
-                {
-                    Application.Run(new large());
-                }
+                Application.Run(new medium(filePath, appVersion));
+
             }
 
         }
