@@ -92,7 +92,7 @@ namespace ezTestReportViewer
             int index;
 
             var (passUnits, failUnits, unitsProcessed, LastTests, historyData, failsData, hintsValues) = ReadDocument();
-            double fpyPercent = calculateFPY((double)passUnits, (double)unitsProcessed);
+            double fpyPercent = calculateFPY(historyData, failsData);
             double failPercent = (double)100 - fpyPercent;
 
             dChart.Series["s1"].Points.AddXY("PASS", fpyPercent.ToString("N2"));
@@ -140,7 +140,7 @@ namespace ezTestReportViewer
             {
                 int index;
                 var (passUnits, failUnits, unitsProcessed, lastTests, historyData, failsData, hintsValues) = ReadDocument();
-                double fpyPercent = calculateFPY((double)passUnits,(double)unitsProcessed);
+                double fpyPercent = calculateFPY(historyData, failsData);
 
                 double failPercent = (double)100 - fpyPercent;
 
@@ -275,9 +275,14 @@ namespace ezTestReportViewer
         }
 
 
-        private static double calculateFPY(double passUnits, double unitsProcessed)
+        private static double calculateFPY(List<string> allList, List<string> failList)
         {
-            return (passUnits * 100) / unitsProcessed;
+            int totalUnitsProcessed = allList.Count();
+            int totalUnitsPassed = allList.Count(element => !failList.Contains(element));
+
+            double totalFPY = (totalUnitsPassed * 100) / totalUnitsProcessed;
+
+            return totalFPY;
         }
 
         private void timer_Tick(object sender, EventArgs e)
