@@ -22,7 +22,6 @@ namespace ezTestReportViewer
         /// </summary>
         /// 
         private static string filePath;
-        private static string windowType;
 
         [STAThread]
 
@@ -30,7 +29,7 @@ namespace ezTestReportViewer
         {
             filePath = args[0];
 
-            string appVersion = "v1.1.2";
+            string appVersion = "v1.1.3";
 
             if (File.Exists(filePath))
             {

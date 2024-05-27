@@ -277,12 +277,18 @@ namespace ezTestReportViewer
 
         private static double calculateFPY(List<string> allList, List<string> failList)
         {
-            int totalUnitsProcessed = allList.Count();
-            int totalUnitsPassed = allList.Count(element => !failList.Contains(element));
+            var failedSerials = new HashSet<string>(failList.Select(f => f.Split(',')[0]));
 
-            double totalFPY = (totalUnitsPassed * 100) / totalUnitsProcessed;
+            int totalItems = allList.Count;
 
-            return totalFPY;
+            allList.RemoveAll(record => failedSerials.Contains(record.Split(',')[0]));
+            
+            int passedItems = allList.Count;
+
+            double fpy = (double)passedItems / totalItems;
+
+            return fpy;
+
         }
 
         private void timer_Tick(object sender, EventArgs e)
