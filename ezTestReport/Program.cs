@@ -46,7 +46,7 @@ namespace EzTestReport
             catch (IOException)
             {
                 result = 0;
-                errorMessage = "The DLL cannot access the file " + filePath + " because this is being used by another process ";
+                errorMessage = "The DLL cannot access the file " + filePath + "or" + imagePath + " because this is being used by another process or doesn't exists";
                 fileOutputPath = filePath;
                 Console.WriteLine(errorMessage);
             }
@@ -75,7 +75,7 @@ namespace EzTestReport
             var statiticsHeader = ws.Range("K10:M10");
 
             //Vars
-            string version = "ezTestReport v1.1.1";
+            string version = "ezTestReport v1.1.2";
 
             //Header Style
 
