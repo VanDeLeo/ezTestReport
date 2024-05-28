@@ -59,7 +59,7 @@
             this.s4 = new System.Windows.Forms.Button();
             this.s3 = new System.Windows.Forms.Button();
             this.s2 = new System.Windows.Forms.Button();
-            this.cycleDuty = new System.Windows.Forms.Label();
+            this.partNumberLabel = new System.Windows.Forms.Label();
             this.serialLabel = new System.Windows.Forms.Label();
             this.lastData = new System.Windows.Forms.Label();
             this.version = new System.Windows.Forms.Label();
@@ -96,7 +96,7 @@
             legend1.Name = "Legend1";
             this.chartFPY.Legends.Add(legend1);
             this.chartFPY.Location = new System.Drawing.Point(224, 22);
-            this.chartFPY.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chartFPY.Margin = new System.Windows.Forms.Padding(4);
             this.chartFPY.Name = "chartFPY";
             this.chartFPY.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.chartFPY.PaletteCustomColors = new System.Drawing.Color[] {
@@ -186,7 +186,7 @@
             this.groupBox1.Controls.Add(this.s4);
             this.groupBox1.Controls.Add(this.s3);
             this.groupBox1.Controls.Add(this.s2);
-            this.groupBox1.Controls.Add(this.cycleDuty);
+            this.groupBox1.Controls.Add(this.partNumberLabel);
             this.groupBox1.Controls.Add(this.serialLabel);
             this.groupBox1.Controls.Add(this.lastData);
             this.groupBox1.Controls.Add(this.version);
@@ -196,9 +196,9 @@
             this.groupBox1.Controls.Add(this.fpyLabel);
             this.groupBox1.Controls.Add(this.passLabel);
             this.groupBox1.Location = new System.Drawing.Point(19, 23);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(640, 357);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
@@ -207,7 +207,7 @@
             // 
             this.s18.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s18.Location = new System.Drawing.Point(612, 315);
-            this.s18.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.s18.Margin = new System.Windows.Forms.Padding(4);
             this.s18.Name = "s18";
             this.s18.Size = new System.Drawing.Size(23, 28);
             this.s18.TabIndex = 28;
@@ -217,7 +217,7 @@
             // 
             this.s17.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s17.Location = new System.Drawing.Point(581, 315);
-            this.s17.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.s17.Margin = new System.Windows.Forms.Padding(4);
             this.s17.Name = "s17";
             this.s17.Size = new System.Drawing.Size(23, 28);
             this.s17.TabIndex = 27;
@@ -227,7 +227,7 @@
             // 
             this.s16.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s16.Location = new System.Drawing.Point(551, 315);
-            this.s16.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.s16.Margin = new System.Windows.Forms.Padding(4);
             this.s16.Name = "s16";
             this.s16.Size = new System.Drawing.Size(23, 28);
             this.s16.TabIndex = 26;
@@ -237,7 +237,7 @@
             // 
             this.s15.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s15.Location = new System.Drawing.Point(520, 315);
-            this.s15.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.s15.Margin = new System.Windows.Forms.Padding(4);
             this.s15.Name = "s15";
             this.s15.Size = new System.Drawing.Size(23, 28);
             this.s15.TabIndex = 25;
@@ -247,7 +247,7 @@
             // 
             this.s14.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s14.Location = new System.Drawing.Point(489, 315);
-            this.s14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.s14.Margin = new System.Windows.Forms.Padding(4);
             this.s14.Name = "s14";
             this.s14.Size = new System.Drawing.Size(23, 28);
             this.s14.TabIndex = 24;
@@ -257,7 +257,7 @@
             // 
             this.s1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s1.Location = new System.Drawing.Point(89, 315);
-            this.s1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.s1.Margin = new System.Windows.Forms.Padding(4);
             this.s1.Name = "s1";
             this.s1.Size = new System.Drawing.Size(23, 28);
             this.s1.TabIndex = 23;
@@ -267,7 +267,7 @@
             // 
             this.s13.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s13.Location = new System.Drawing.Point(459, 315);
-            this.s13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.s13.Margin = new System.Windows.Forms.Padding(4);
             this.s13.Name = "s13";
             this.s13.Size = new System.Drawing.Size(23, 28);
             this.s13.TabIndex = 22;
@@ -277,7 +277,7 @@
             // 
             this.s12.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s12.Location = new System.Drawing.Point(428, 315);
-            this.s12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.s12.Margin = new System.Windows.Forms.Padding(4);
             this.s12.Name = "s12";
             this.s12.Size = new System.Drawing.Size(23, 28);
             this.s12.TabIndex = 21;
@@ -287,7 +287,7 @@
             // 
             this.s11.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s11.Location = new System.Drawing.Point(397, 315);
-            this.s11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.s11.Margin = new System.Windows.Forms.Padding(4);
             this.s11.Name = "s11";
             this.s11.Size = new System.Drawing.Size(23, 28);
             this.s11.TabIndex = 20;
@@ -297,7 +297,7 @@
             // 
             this.s10.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s10.Location = new System.Drawing.Point(367, 315);
-            this.s10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.s10.Margin = new System.Windows.Forms.Padding(4);
             this.s10.Name = "s10";
             this.s10.Size = new System.Drawing.Size(23, 28);
             this.s10.TabIndex = 19;
@@ -307,7 +307,7 @@
             // 
             this.s9.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s9.Location = new System.Drawing.Point(336, 315);
-            this.s9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.s9.Margin = new System.Windows.Forms.Padding(4);
             this.s9.Name = "s9";
             this.s9.Size = new System.Drawing.Size(23, 28);
             this.s9.TabIndex = 18;
@@ -317,7 +317,7 @@
             // 
             this.s8.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s8.Location = new System.Drawing.Point(305, 315);
-            this.s8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.s8.Margin = new System.Windows.Forms.Padding(4);
             this.s8.Name = "s8";
             this.s8.Size = new System.Drawing.Size(23, 28);
             this.s8.TabIndex = 17;
@@ -327,7 +327,7 @@
             // 
             this.s7.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s7.Location = new System.Drawing.Point(275, 315);
-            this.s7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.s7.Margin = new System.Windows.Forms.Padding(4);
             this.s7.Name = "s7";
             this.s7.Size = new System.Drawing.Size(23, 28);
             this.s7.TabIndex = 16;
@@ -338,7 +338,7 @@
             // 
             this.s6.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s6.Location = new System.Drawing.Point(244, 315);
-            this.s6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.s6.Margin = new System.Windows.Forms.Padding(4);
             this.s6.Name = "s6";
             this.s6.Size = new System.Drawing.Size(23, 28);
             this.s6.TabIndex = 15;
@@ -349,7 +349,7 @@
             // 
             this.s5.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s5.Location = new System.Drawing.Point(213, 315);
-            this.s5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.s5.Margin = new System.Windows.Forms.Padding(4);
             this.s5.Name = "s5";
             this.s5.Size = new System.Drawing.Size(23, 28);
             this.s5.TabIndex = 14;
@@ -360,7 +360,7 @@
             // 
             this.s4.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s4.Location = new System.Drawing.Point(183, 315);
-            this.s4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.s4.Margin = new System.Windows.Forms.Padding(4);
             this.s4.Name = "s4";
             this.s4.Size = new System.Drawing.Size(23, 28);
             this.s4.TabIndex = 13;
@@ -370,7 +370,7 @@
             // 
             this.s3.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s3.Location = new System.Drawing.Point(151, 315);
-            this.s3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.s3.Margin = new System.Windows.Forms.Padding(4);
             this.s3.Name = "s3";
             this.s3.Size = new System.Drawing.Size(24, 28);
             this.s3.TabIndex = 12;
@@ -380,21 +380,21 @@
             // 
             this.s2.BackColor = System.Drawing.SystemColors.ControlDark;
             this.s2.Location = new System.Drawing.Point(120, 315);
-            this.s2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.s2.Margin = new System.Windows.Forms.Padding(4);
             this.s2.Name = "s2";
             this.s2.Size = new System.Drawing.Size(23, 28);
             this.s2.TabIndex = 11;
             this.s2.UseVisualStyleBackColor = false;
             // 
-            // cycleDuty
+            // partNumberLabel
             // 
-            this.cycleDuty.AutoSize = true;
-            this.cycleDuty.Location = new System.Drawing.Point(13, 250);
-            this.cycleDuty.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.cycleDuty.Name = "cycleDuty";
-            this.cycleDuty.Size = new System.Drawing.Size(74, 16);
-            this.cycleDuty.TabIndex = 9;
-            this.cycleDuty.Text = "Cycle Duty;";
+            this.partNumberLabel.AutoSize = true;
+            this.partNumberLabel.Location = new System.Drawing.Point(13, 250);
+            this.partNumberLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.partNumberLabel.Name = "partNumberLabel";
+            this.partNumberLabel.Size = new System.Drawing.Size(103, 16);
+            this.partNumberLabel.TabIndex = 9;
+            this.partNumberLabel.Text = "PARTNUMBER";
             // 
             // serialLabel
             // 
@@ -435,7 +435,7 @@
             this.tabControl.Controls.Add(this.History);
             this.tabControl.Controls.Add(this.Fails);
             this.tabControl.Location = new System.Drawing.Point(1, 2);
-            this.tabControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(701, 445);
@@ -445,9 +445,9 @@
             // 
             this.Start.Controls.Add(this.groupBox2);
             this.Start.Location = new System.Drawing.Point(4, 25);
-            this.Start.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Start.Margin = new System.Windows.Forms.Padding(4);
             this.Start.Name = "Start";
-            this.Start.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Start.Padding = new System.Windows.Forms.Padding(4);
             this.Start.Size = new System.Drawing.Size(693, 416);
             this.Start.TabIndex = 0;
             this.Start.Text = "Start";
@@ -460,9 +460,9 @@
             this.groupBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.groupBox2.Controls.Add(this.groupBox1);
             this.groupBox2.Location = new System.Drawing.Point(5, 5);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(677, 394);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
@@ -471,9 +471,9 @@
             // 
             this.History.Controls.Add(this.listBox1);
             this.History.Location = new System.Drawing.Point(4, 25);
-            this.History.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.History.Margin = new System.Windows.Forms.Padding(4);
             this.History.Name = "History";
-            this.History.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.History.Padding = new System.Windows.Forms.Padding(4);
             this.History.Size = new System.Drawing.Size(693, 416);
             this.History.TabIndex = 1;
             this.History.Text = " History";
@@ -487,7 +487,7 @@
             this.listBox1.HorizontalScrollbar = true;
             this.listBox1.ItemHeight = 20;
             this.listBox1.Location = new System.Drawing.Point(4, 4);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(4);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(685, 404);
             this.listBox1.TabIndex = 0;
@@ -512,7 +512,7 @@
             this.Fails.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Fails.Controls.Add(this.listBox2);
             this.Fails.Location = new System.Drawing.Point(4, 25);
-            this.Fails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Fails.Margin = new System.Windows.Forms.Padding(4);
             this.Fails.Name = "Fails";
             this.Fails.Size = new System.Drawing.Size(693, 416);
             this.Fails.TabIndex = 2;
@@ -527,7 +527,7 @@
             this.listBox2.HorizontalScrollbar = true;
             this.listBox2.ItemHeight = 20;
             this.listBox2.Location = new System.Drawing.Point(4, 4);
-            this.listBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBox2.Margin = new System.Windows.Forms.Padding(4);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(685, 404);
             this.listBox2.TabIndex = 1;
@@ -556,7 +556,7 @@
             this.Controls.Add(this.tabControl);
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(715, 483);
             this.MinimizeBox = false;
@@ -595,7 +595,7 @@
         private System.Windows.Forms.Button s4;
         private System.Windows.Forms.Button s3;
         private System.Windows.Forms.Button s2;
-        private System.Windows.Forms.Label cycleDuty;
+        private System.Windows.Forms.Label partNumberLabel;
         private System.Windows.Forms.Button s13;
         private System.Windows.Forms.Button s12;
         private System.Windows.Forms.Button s11;

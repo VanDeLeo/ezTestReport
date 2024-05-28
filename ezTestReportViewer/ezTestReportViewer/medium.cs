@@ -19,6 +19,8 @@ namespace ezTestReportViewer
         private static Label pLabel;
         private static Label fLabel;
         private static Label yLabel;
+        private static Label serLabel;
+        private static Label partLabel;
 
         private static Button b1;
         private static Button b2;
@@ -56,6 +58,8 @@ namespace ezTestReportViewer
             pLabel = passLabel;
             fLabel = failLabel;
             yLabel = fpyLabel;
+            serLabel = serialLabel;
+            partLabel = partNumberLabel;
 
             buttons.Add(b1 = s1);
             buttons.Add(b2 = s2);
@@ -102,6 +106,9 @@ namespace ezTestReportViewer
             fLabel.Text = "Fail Units = " + failUnits.ToString();
             yLabel.Text = fpyPercent.ToString("N2") + "%";
 
+            serLabel.Text = "Serial: " + hintsValues[0].Split(',')[0];
+            partLabel.Text = "P/N: " + hintsValues[0].Split(',')[1];
+
             buttons.Reverse();
 
             foreach(Button button in buttons)
@@ -146,6 +153,9 @@ namespace ezTestReportViewer
                 pLabel.Text = "Pass Units = " + passUnits.ToString();
                 fLabel.Text = "Fail Units = " + failUnits.ToString();
                 yLabel.Text = fpyPercent.ToString("N2") + "%";
+
+                serLabel.Text = "Serial: " + hintsValues[0].Split(',')[0];
+                partLabel.Text = "P/N: " + hintsValues[0].Split(',')[1];
 
                 dChart.Series["s1"].Points.Clear();
                 dChart.Series["s1"].Points.AddXY("PASS", fpyPercent.ToString("N2"));
