@@ -102,8 +102,7 @@ namespace ezTestReportViewer
             fLabel.Text = "Fail Units = " + failUnits.ToString();
             yLabel.Text = fpyPercent.ToString("N2") + "%";
 
-            LastTests.Reverse();
-            hintsValues.Reverse();
+            buttons.Reverse();
 
             foreach(Button button in buttons)
             {
@@ -151,9 +150,6 @@ namespace ezTestReportViewer
                 dChart.Series["s1"].Points.Clear();
                 dChart.Series["s1"].Points.AddXY("PASS", fpyPercent.ToString("N2"));
                 dChart.Series["s1"].Points.AddXY("FAIL", failPercent.ToString("N2"));
-
-                lastTests.Reverse();
-                hintsValues.Reverse();
 
                 foreach (Button button in buttons)
                 {
@@ -253,7 +249,7 @@ namespace ezTestReportViewer
                             buttonValues.Add("N");
                             hints.Add("Empty");
                         }
-                        for (int row = 0; row < nButtons; row++)
+                        for (int row = 0; row < nButtons-rowsOffset; row++)
                         {
                             hints.Add(historyRows[row]);
                             string[] rowData = historyRows[row].Split(',');
@@ -277,15 +273,22 @@ namespace ezTestReportViewer
 
         private static double calculateFPY(List<string> allList, List<string> failList)
         {
-            var failedSerials = new HashSet<string>(failList.Select(f => f.Split(',')[0]));
+            var firstAppearances = new Dictionary<string, string>();
 
-            int totalItems = allList.Count;
+            foreach (var record in allList)
+            {
+                var serial = record.Split(',')[0];
+                if (!firstAppearances.ContainsKey(serial))
+                {
+                    firstAppearances[serial] = record;
+                }
+            }
 
-            allList.RemoveAll(record => failedSerials.Contains(record.Split(',')[0]));
-            
-            int passedItems = allList.Count;
+            int totalItems = firstAppearances.Count;
 
-            double fpy = (double)passedItems / totalItems;
+            int passedItems = firstAppearances.Values.Count(record => record.Split(',')[3] != " F ");
+
+            double fpy = ((double)passedItems / totalItems) * 100;
 
             return fpy;
 
